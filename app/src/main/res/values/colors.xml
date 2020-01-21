@@ -3,6 +3,7 @@
     <color name="colorPrimary">#2D383F</color>
     <color name="colorPrimaryDark">#2D383F</color>
     <color name="background">#EEEDEF</color>
+    <color name="backgorund_titlebar">#FFFFFF</color>
     <color name="login_form_details_light">#000000</color>
 
 </resources>

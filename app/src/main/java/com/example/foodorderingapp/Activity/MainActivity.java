@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.foodorderingapp.Adapater.PopularCategory;
@@ -21,13 +22,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout dl;
-    private ActionBarDrawerToggle dt;
+   private EditText etsearch;
 
-    ImageView iv;
-    private
-    List<PopCategory> lstcat;
-    RecyclerView rv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,35 +32,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //getSupportActionBar().hide();
 
-        dl = (DrawerLayout) findViewById(R.id.rel1);
-        dt =  new ActionBarDrawerToggle(this,dl,R.string.open,R.string.close);
 
-        dl.addDrawerListener(dt);
-        dt.syncState();
+        getSupportActionBar().hide();
 
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().back
+        etsearch = findViewById(R.id.etsearch);
 
 
 
 
 
 
-        rv = findViewById(R.id.recyclerview);
 
-        lstcat = new ArrayList<>();
 
-        lstcat.add(new PopCategory(R.drawable.burger,"Burger"));
-        lstcat.add(new PopCategory(R.drawable.sandwiche,"Sandwiche"));
-        lstcat.add(new PopCategory(R.drawable.burger,"Burger"));
-        lstcat.add(new PopCategory(R.drawable.sandwiche,"Sandwiche"));
-        lstcat.add(new PopCategory(R.drawable.burger,"Burger"));
-        lstcat.add(new PopCategory(R.drawable.sandwiche,"Sandwiche"));
 
-        PopularCategory pca = new PopularCategory(this,lstcat);
-        rv.setAdapter(pca);
-        rv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
 
 
 
@@ -72,12 +53,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if(dt.onOptionsItemSelected(item)){
-            return  true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
