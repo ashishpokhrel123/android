@@ -1,10 +1,16 @@
 package com.example.foodorderingapp.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.foodorderingapp.Adapater.PopularCategory;
 import com.example.foodorderingapp.Model.PopCategory;
@@ -14,6 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle dt;
+
+    ImageView iv;
+    private
     List<PopCategory> lstcat;
     RecyclerView rv;
 
@@ -21,7 +33,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+
+        dl = (DrawerLayout) findViewById(R.id.rel1);
+        dt =  new ActionBarDrawerToggle(this,dl,R.string.open,R.string.close);
+
+        dl.addDrawerListener(dt);
+        dt.syncState();
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().back
+
+
+
+
+
 
         rv = findViewById(R.id.recyclerview);
 
@@ -41,6 +68,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(dt.onOptionsItemSelected(item)){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
