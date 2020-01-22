@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2D383F</color>
-    <color name="colorPrimaryDark">#2D383F</color>
-    <color name="background">#EEEDEF</color>
-    <color name="backgorund_titlebar">#FFFFFF</color>
-    <color name="login_form_details_light">#000000</color>
-
+    <color name="colorPrimarydark">#690500</color>
+    <color name="colorPrimary">#AF231E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="greylight">#8A7E72</color>
+    <color name="light">#EEF0F2</color>
+    <color name="mediumgrey">#595959</color>
+    <color name="black">#12130F</color>
 </resources>
