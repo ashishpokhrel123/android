@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".Activity.RegisterActivity">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,53 +17,69 @@
 
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="30dp"
     android:layout_height="wrap_content"
     android:background="@drawable/circle_image"
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:text="Register!"
-        android:textColor="#0F0F0F"
-        android:textSize="34dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/lo"
+            android:layout_gravity="center"/>
         <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="42dp"
-            android:background="@drawable/et_bg"
+            android:background="@drawable/login_edittext"
             android:hint="Name"
             android:paddingLeft="18dp" />
 
 
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="42dp"
-        android:background="@drawable/et_bg"
+        android:background="@drawable/login_edittext"
         android:hint="E-mail"
         android:paddingLeft="18dp" />
         <EditText
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="42dp"
-            android:background="@drawable/et_bg"
+            android:background="@drawable/login_edittext"
             android:hint="contact No"
             android:paddingLeft="18dp" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="42dp"
-        android:background="@drawable/et_bg"
+        android:background="@drawable/login_edittext"
         android:hint="Password"
         android:paddingLeft="18dp"
         />
+        <EditText
+            android:id="@+id/cpassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/login_edittext"
+            android:hint="ConfirmPassword"
+            android:paddingLeft="18dp"
+            />
+        <CheckBox
+            android:id="@+id/chkrememberme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree all Terms and Conditions."
+            />
 
 
     <Button
