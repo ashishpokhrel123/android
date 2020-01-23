@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimarydark">#690500</color>
     <color name="colorPrimary">#AF231E</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#000000</color>
     <color name="greylight">#8A7E72</color>
     <color name="light">#EEF0F2</color>
     <color name="mediumgrey">#595959</color>

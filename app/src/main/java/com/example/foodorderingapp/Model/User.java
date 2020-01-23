@@ -7,6 +7,16 @@ public class User {
     private String username;
     private String password;
 
+    public String getProfileimage() {
+        return profileimage;
+    }
+
+    public void setProfileimage(String profileimage) {
+        this.profileimage = profileimage;
+    }
+
+    private String profileimage;
+
     public String getName() {
         return name;
     }
@@ -49,12 +59,13 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String phone, String email, String username, String password) {
+    public User(String name, String phone, String email, String username, String password,String profileimage) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.profileimage = profileimage;
     }
 
     public User(String username,String password)

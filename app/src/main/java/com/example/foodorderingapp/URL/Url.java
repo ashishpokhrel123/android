@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Url {
 
-    public static final String BASE_URL = "http://192.168.0.119:3002/";
+    public static final String BASE_URL = "http://192.168.1.26:3002/";
     public static String imagePath = BASE_URL + "uploads/";
 
 

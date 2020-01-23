@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         etusername = findViewById(R.id.username);
         etpassword = findViewById(R.id.password);
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
   public void openDashBoard(){
-        Intent i = new Intent(LoginActivity.this,MainActivity.class);
+        Intent i = new Intent(LoginActivity.this,DashboardActivity.class);
         startActivity(i);
   }
 

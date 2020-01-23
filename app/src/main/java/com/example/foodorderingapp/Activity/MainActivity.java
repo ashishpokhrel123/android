@@ -22,6 +22,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
    private EditText etsearch;
 
 
@@ -33,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
 
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
-        etsearch = findViewById(R.id.etsearch);
+        //etsearch = findViewById(R.id.etsearch);
 
 
 
