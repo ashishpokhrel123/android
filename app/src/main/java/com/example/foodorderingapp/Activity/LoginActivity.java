@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etusername,etpassword;
     private Button btnlogin;
-    private TextView txtnext;
+    private TextView txtreg;
 
 
 
@@ -47,9 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-       txtnext = findViewById(R.id.txtnext1);
+       txtreg = findViewById(R.id.tvSignUp);
 
-       txtnext.setOnClickListener(new View.OnClickListener() {
+       txtreg.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
@@ -57,7 +57,9 @@ public class LoginActivity extends AppCompatActivity {
            }
        });
 
-   ;
+
+
+
 
 
 
