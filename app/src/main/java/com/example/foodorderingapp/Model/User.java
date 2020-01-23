@@ -2,7 +2,6 @@ package com.example.foodorderingapp.Model;
 
 public class User {
     private String name;
-    private String address;
     private String phone;
     private String email;
     private String username;
@@ -16,13 +15,7 @@ public class User {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPhone() {
         return phone;
@@ -56,13 +49,19 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String address, String phone, String email, String username, String password) {
+    public User(String name, String phone, String email, String username, String password) {
         this.name = name;
-        this.address = address;
         this.phone = phone;
         this.email = email;
         this.username = username;
         this.password = password;
     }
+
+    public User(String username,String password)
+    {
+        this.username = username;
+        this.password = password;
+    }
+
 
 }

@@ -55,6 +55,14 @@
             android:background="@drawable/login_edittext"
             android:hint="contact No"
             android:paddingLeft="18dp" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/login_edittext"
+            android:hint="username"
+            android:paddingLeft="18dp" />
 
     <EditText
         android:id="@+id/password"
@@ -83,6 +91,7 @@
 
 
     <Button
+        android:id="@+id/signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
