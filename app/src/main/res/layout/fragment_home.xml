@@ -12,7 +12,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="Explore Food"
-      android:textSize="20dp"
+      android:textSize="50dp"
       android:textColor="#000"
        android:layout_marginStart="10dp"
        android:layout_marginTop="20dp"
