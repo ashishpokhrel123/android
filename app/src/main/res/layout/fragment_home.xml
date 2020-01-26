@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".Fragment.HomeFragment">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    tools:context=".Fragment.HomeFragment">
+   >
 
 
 
@@ -31,7 +40,7 @@
        android:layout_height="wrap_content"
       android:text="What would you like to order?"
       android:layout_below="@id/src"
-      android:textSize="20dp"
+      android:textSize="15sp"
        android:textStyle="bold"
        android:textColor="@color/black"
        android:layout_marginStart="10dp"
@@ -56,7 +65,7 @@
        android:layout_height="wrap_content"
        android:layout_alignParentStart="true"
       android:text="Today's Hot Deals"
-      android:textSize="20dp"
+      android:textSize="15sp"
       android:textStyle="bold"
       android:textColor="@color/black"
       android:layout_marginStart="10dp"
@@ -67,7 +76,7 @@
           android:layout_width="80dp"
           android:layout_height="30dp"
           android:layout_marginTop="20dp"
-         android:text="View All"
+          android:text="View All"
           android:textSize="10dp"
           android:background="@drawable/button"
           android:textColor="#fff"
@@ -79,9 +88,8 @@
        android:layout_height="wrap_content"
        android:id="@+id/popular_recyclerview_hotdeals"
        android:layout_below="@id/relaative"/>
-
    <RelativeLayout
-       android:id="@+id/relaative_restaurant"
+       android:id="@+id/relaative_pop"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_below="@id/popular_recyclerview_hotdeals"
@@ -89,12 +97,12 @@
        >
 
       <TextView
-          android:id="@+id/txtrestaurant"
+          android:id="@+id/Pop"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignParentStart="true"
-          android:text="Restuarant"
-          android:textSize="20dp"
+          android:text="Popular"
+          android:textSize="15sp"
           android:textStyle="bold"
           android:textColor="@color/black"
           android:layout_marginStart="10dp"
@@ -112,6 +120,47 @@
           android:layout_alignParentEnd="true" />
 
    </RelativeLayout>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/recycler_populattoday"
+       android:layout_below="@id/relaative_pop"/>
+
+   <RelativeLayout
+       android:id="@+id/relaative_restaurant"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/recycler_populattoday"
+
+       >
+
+      <TextView
+          android:id="@+id/txtrestaurant"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:text="Restuarant"
+          android:textSize="15sp"
+          android:textStyle="bold"
+          android:textColor="@color/black"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="20dp"/>
+
+      <Button
+
+          android:layout_width="80dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="20dp"
+          android:text="View All"
+          android:textSize="10dp"
+          android:background="@drawable/button"
+          android:textColor="#fff"
+          android:layout_alignParentEnd="true" />
+
+   </RelativeLayout>
+
+
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -124,3 +173,4 @@
 
 
 </RelativeLayout>
+</ScrollView>

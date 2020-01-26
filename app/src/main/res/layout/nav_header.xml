@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="@color/colorPrimary"
     android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:orientation="horizontal"
+    android:padding="16dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round" />
+        android:id="@+id/userprofile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/user" />
 
     <TextView
+        android:id="@+id/txtuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="Name"
+        android:layout_toEndOf="@id/userprofile"
+        android:layout_marginStart="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="gmail" />
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@id/userprofile"
+        android:background="@drawable/button"
+        android:text="Edit Profile"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/txtuser"/>
 
-</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/userprofile"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/black"/>
+
+</RelativeLayout>

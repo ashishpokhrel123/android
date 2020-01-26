@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.example.foodorderingapp.Fragment.HomeFragment;
 import com.example.foodorderingapp.Model.ExploreFood;
 import com.example.foodorderingapp.Model.HotDeals;
+import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +31,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     Fragment selectedFragment = null;
     public static List<ExploreFood> lstexfood = new ArrayList<>();
     public static List<HotDeals> lstdeals = new ArrayList<>();
+    public static  List<Restuarant> lstres = new ArrayList<>();
+    public static  List<ExploreFood> lstpop = new ArrayList<>();
 
 
 
@@ -63,6 +66,17 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         lstdeals = new ArrayList<>();
         lstdeals.add(new HotDeals(R.drawable.burger1));
         lstdeals.add(new HotDeals(R.drawable.chickenfried));
+        lstdeals.add(new HotDeals(R.drawable.pizza));
+
+        lstres = new ArrayList<>();
+        lstres.add(new Restuarant("KFC",R.drawable.fries));
+        lstres.add(new Restuarant("Burger House",R.drawable.burger));
+        lstres.add(new Restuarant("Hotel Annapurna",R.drawable.pasta));
+
+        lstpop = new ArrayList<>();
+        lstpop.add(new ExploreFood(R.drawable.momo,"Momo"));
+        lstpop.add(new ExploreFood(R.drawable.noodles,"Noodles"));
+        lstpop.add(new ExploreFood(R.drawable.cofee,"Cofee"));
 
 
         if(savedInstanceState == null){
