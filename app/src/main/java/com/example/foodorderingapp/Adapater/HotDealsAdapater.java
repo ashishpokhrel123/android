@@ -4,24 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodorderingapp.Model.PopCategory;
+import com.example.foodorderingapp.Model.HotDeals;
 import com.example.foodorderingapp.R;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class PopularCategory extends  RecyclerView.Adapter<PopularCategory.PopularCategoryViewHolder> {
+public class HotDealsAdapater extends  RecyclerView.Adapter<HotDealsAdapater.PopularCategoryViewHolder> {
 
     Context mContext;
-    List<PopCategory> lstpopcategory;
+    List<HotDeals> lstpopcategory;
 
-    public PopularCategory(Context mContext, List<PopCategory>lstpopcategory)
+    public HotDealsAdapater(Context mContext, List<HotDeals>lstpopcategory)
     {
         this.mContext = mContext;
         this.lstpopcategory = lstpopcategory;
@@ -32,15 +30,15 @@ public class PopularCategory extends  RecyclerView.Adapter<PopularCategory.Popul
     @NonNull
     @Override
     public PopularCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.popular_categories,parent,false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.hot_deals,parent,false);
         return new PopularCategoryViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PopularCategoryViewHolder holder, int position) {
-        PopCategory pc = lstpopcategory.get(position);
+        HotDeals pc = lstpopcategory.get(position);
         holder.image.setImageResource(pc.getCateimg());
-        holder.txtcatename.setText(pc.getCarename());
+
     }
 
 
@@ -52,14 +50,14 @@ public class PopularCategory extends  RecyclerView.Adapter<PopularCategory.Popul
 
     public class PopularCategoryViewHolder extends RecyclerView.ViewHolder
     {
-       CircleImageView image;
-       TextView txtcatename;
+       ImageView image;
+
 
         public PopularCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.cimage);
-            txtcatename = itemView.findViewById(R.id.catename);
+            image = itemView.findViewById(R.id.hot_dealsimg);
+
         }
     }
 

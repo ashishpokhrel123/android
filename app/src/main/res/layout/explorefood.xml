@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/foodexplore">
+<androidx.cardview.widget.CardView android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="100dp"
+    android:layout_height="120dp"
+    android:clickable="true"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="7dp"
+    cardview:cardCornerRadius="4dp"
+    android:background="#aaaa"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/explorefood"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/explorefood"
-        android:src="@drawable/burger"/>
+        android:id="@+id/pop_img"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:shape="ring"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/pop_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Pre_name"
+        android:gravity="center"
+        android:layout_below="@id/pop_img"
+        android:textSize="13sp"/>
+  </RelativeLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>
