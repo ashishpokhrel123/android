@@ -61,9 +61,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
         lstdeals = new ArrayList<>();
-        lstdeals.add(new HotDeals(R.drawable.fries));
-        lstdeals.add(new HotDeals(R.drawable.burger));
-        lstdeals.add(new HotDeals(R.drawable.sandwiche));
+        lstdeals.add(new HotDeals(R.drawable.burger1));
+        lstdeals.add(new HotDeals(R.drawable.chickenfried));
+
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.container,
