@@ -44,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
        // nv = findViewById(R.id.bottom_navigation);
          Toolbar toolbar = findViewById(R.id.app_bar);
-        //getActionBar().hide();
+      getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
