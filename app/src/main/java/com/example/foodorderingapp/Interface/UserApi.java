@@ -2,6 +2,7 @@ package com.example.foodorderingapp.Interface;
 
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.ServerResponse.ImageResponse;
+import com.example.foodorderingapp.ServerResponse.UserResponse;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -12,13 +13,13 @@ import retrofit2.http.Part;
 
 public interface UserApi {
 
-    @POST("/users/signup")
+    @POST("users/signup")
     Call<Void> signup (@Body User user);
 
     @POST("users/login")
-    Call<Void> login (@Body User user);
+    Call<UserResponse> login (@Body User user);
 
     @Multipart
-    @POST("/upload")
-    Call<ImageResponse> uploadimage(@Part MultipartBody.Part Profileimage);
+    @POST("upload")
+    Call<ImageResponse> uploadimage(@Part MultipartBody.Part img);
 }

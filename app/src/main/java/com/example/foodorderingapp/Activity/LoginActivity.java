@@ -2,10 +2,13 @@ package com.example.foodorderingapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +16,10 @@ import android.widget.Toast;
 import com.example.foodorderingapp.Interface.UserApi;
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.R;
+import com.example.foodorderingapp.ServerResponse.UserResponse;
 import com.example.foodorderingapp.URL.Url;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etusername,etpassword;
     private Button btnlogin;
     private TextView txtreg;
+    private CheckBox chk;
+
+    SharedPreferences sharedPreferences;
 
 
 
@@ -38,6 +47,13 @@ public class LoginActivity extends AppCompatActivity {
         etusername = findViewById(R.id.username);
         etpassword = findViewById(R.id.password);
         btnlogin = findViewById(R.id.login);
+        chk = findViewById(R.id.chkrememberme);
+
+        SharedPreferences savedata =  getSharedPreferences("User", Context.MODE_PRIVATE);
+       if(savedata.getString("username","").isEmpty()){
+           chk.setChecked(false);
+       }
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,28 +82,35 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void login()
     {
-        User usr = new User(etusername.getText().toString(),etpassword.getText().toString());
+        if(chk.isChecked()) {
+            User usr = new User(etusername.getText().toString(), etpassword.getText().toString());
 
-        UserApi userApi = Url.getInstance().create(UserApi.class);
-        Call<Void> logincall = userApi.login(usr);
+            UserApi userApi = Url.getInstance().create(UserApi.class);
+            Call<UserResponse> userResponse = userApi.login(usr);
+
+            try {
+
+                Response<UserResponse> userlogin = userResponse.execute();
+                if (userlogin.isSuccessful() &&
+                        userlogin.body().getStatus().equals("Login success!"))
 
 
-        logincall.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Login Error", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                openDashBoard();
+                    sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                Url.token += userlogin.body().getToken();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }else{
+            sharedPreferences=getSharedPreferences("User",0);
+            sharedPreferences.edit().clear().commit();
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error " + t.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"Please check box",Toast.LENGTH_SHORT).show();
+        }
 
-            }
-        });
+
 
 
     }

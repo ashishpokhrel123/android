@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 saveimage();
 
-                signup();
+                //signup();
             }
         });
 
@@ -86,28 +86,26 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK){
-            if(data == null){
-                Toast.makeText(this,"Please Select image",Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_OK) {
+            if (data == null) {
+                Toast.makeText(this, "Please select an image ", Toast.LENGTH_SHORT).show();
             }
-
         }
-        Uri uri = data.getData();
+       Uri uri = data.getData();
         imgProfile.setImageURI(uri);
         imagepath = getRealPathFromUri(uri);
     }
 
-    private String getRealPathFromUri(Uri uri){
+    private String getRealPathFromUri(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
         CursorLoader loader = new CursorLoader(getApplicationContext(),
-                uri,projection,null,null,null);
+                uri, projection, null, null, null);
         Cursor cursor = loader.loadInBackground();
         int colIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
         String result = cursor.getString(colIndex);
         cursor.close();
         return result;
-
     }
 
     private void saveimage(){
@@ -123,8 +121,11 @@ public class RegisterActivity extends AppCompatActivity {
         //Synchronous methid
         try {
             Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
-            imageName = imageResponseResponse.body().getProfileimage();
-            Toast.makeText(this, "Image inserted" + imageName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,""+imageResponseResponse,Toast.LENGTH_SHORT).show();
+           imageName = imageResponseResponse.body().getFilename();
+           Toast.makeText(this, "Image inserted" + imageName, Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(getApplicationContext(),"response:"+responseBodyCall,Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Toast.makeText(this, "Error" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
@@ -132,30 +133,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void signup(){
-        User usr = new User(etname.getText().toString(), etemail.getText().toString(),
-                etphone.getText().toString(),etusername.getText().toString(),etpassword.getText().toString(),imageName);
-
-        UserApi userApi = Url.getInstance().create(UserApi.class);
-        Call<Void>   registercall = userApi.signup(usr);
-
-        registercall.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "Code: " +response.body(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Intent signUpComplete = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(signUpComplete);
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Error: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
     }
 
@@ -171,4 +148,4 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-}
+
