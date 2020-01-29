@@ -1,6 +1,7 @@
 package com.example.foodorderingapp.Fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -32,6 +33,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+
 
         recyclerView = v.findViewById(R.id.popular_recyclerview);
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);

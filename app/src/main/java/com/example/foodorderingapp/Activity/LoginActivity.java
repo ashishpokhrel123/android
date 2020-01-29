@@ -1,6 +1,8 @@
 package com.example.foodorderingapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.foodorderingapp.Fragment.HomeFragment;
 import com.example.foodorderingapp.Interface.UserApi;
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.R;
@@ -22,6 +25,7 @@ import com.example.foodorderingapp.URL.Url;
 import com.example.foodorderingapp.strictmode.StrictModeClass;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,17 +57,10 @@ public class LoginActivity extends AppCompatActivity {
         btnlogin = findViewById(R.id.login);
         chk = findViewById(R.id.chkrememberme);
 
-        SharedPreferences savedata =  getSharedPreferences("User", Context.MODE_PRIVATE);
-       if(savedata.getString("username","").isEmpty()){
-           chk.setChecked(false);
-       } else{
-           etusername.setText(sharedPreferences.getString("username",""));
-           etpassword.setText(sharedPreferences.getString("password",""));
-           chk.setChecked(true);
-           name = sharedPreferences.getString("name","");
-           Username = sharedPreferences.getString("username","");
-           openDashBoard();
-       }
+
+
+
+
 
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
@@ -108,20 +105,16 @@ public class LoginActivity extends AppCompatActivity {
                 if(!response.isSuccessful()){
                     Toast.makeText(LoginActivity.this,"Username or password not match",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(chk.isChecked()){
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("username",Username);
-                        editor.putString("password",Password);
-                        editor.putString("name",name);
-                        editor.commit();
+                    Toast.makeText(LoginActivity.this,"Token:"+response.body().getToken(),Toast.LENGTH_SHORT).show();
+                    sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username",etusername.getText().toString());
+                    editor.putString("token", response.body().getToken());
 
-                    }else{
-                        sharedPreferences.edit().commit();
-                    }
-                    token =  getSharedPreferences("token",MODE_PRIVATE);
-                    SharedPreferences.Editor token = sharedPreferences.edit();
-                    token.putString("token",response.body().getToken());
-                    token.commit();
+                    openDashBoard();
+
+
+
 
 
 
