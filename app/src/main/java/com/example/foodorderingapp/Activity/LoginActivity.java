@@ -13,11 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.foodorderingapp.Interface.UserApi;
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.ServerResponse.UserResponse;
 import com.example.foodorderingapp.URL.Url;
+import com.example.foodorderingapp.strictmode.StrictModeClass;
 
 import java.io.IOException;
 
@@ -33,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtreg;
     private CheckBox chk;
 
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences,token;
+
+    String name,Username,Password;
 
 
 
@@ -52,6 +56,13 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences savedata =  getSharedPreferences("User", Context.MODE_PRIVATE);
        if(savedata.getString("username","").isEmpty()){
            chk.setChecked(false);
+       } else{
+           etusername.setText(sharedPreferences.getString("username",""));
+           etpassword.setText(sharedPreferences.getString("password",""));
+           chk.setChecked(true);
+           name = sharedPreferences.getString("name","");
+           Username = sharedPreferences.getString("username","");
+           openDashBoard();
        }
 
 
@@ -82,35 +93,47 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void login()
     {
-        if(chk.isChecked()) {
-            User usr = new User(etusername.getText().toString(), etpassword.getText().toString());
-
-            UserApi userApi = Url.getInstance().create(UserApi.class);
-            Call<UserResponse> userResponse = userApi.login(usr);
-
-            try {
-
-                Response<UserResponse> userlogin = userResponse.execute();
-                if (userlogin.isSuccessful() &&
-                        userlogin.body().getStatus().equals("Login success!"))
+        String uname = etusername.getText().toString();
+        String pwd = etpassword.getText().toString();
 
 
-                    sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
+        User user = new User(uname,pwd);
 
-                Url.token += userlogin.body().getToken();
+        UserApi  userApi = Url.getInstance().create(UserApi.class);
+        Call<UserResponse> userloginresponse = userApi.login(user);
 
-            } catch (IOException e) {
-                e.printStackTrace();
+        userloginresponse.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(LoginActivity.this,"Username or password not match",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(chk.isChecked()){
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username",Username);
+                        editor.putString("password",Password);
+                        editor.putString("name",name);
+                        editor.commit();
+
+                    }else{
+                        sharedPreferences.edit().commit();
+                    }
+                    token =  getSharedPreferences("token",MODE_PRIVATE);
+                    SharedPreferences.Editor token = sharedPreferences.edit();
+                    token.putString("token",response.body().getToken());
+                    token.commit();
+
+
+
+
+                }
             }
-        }else{
-            sharedPreferences=getSharedPreferences("User",0);
-            sharedPreferences.edit().clear().commit();
 
-            Toast.makeText(LoginActivity.this,"Please check box",Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
 
-
+            }
+        });
 
 
     }

@@ -18,6 +18,7 @@ import com.example.foodorderingapp.Interface.UserApi;
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.ServerResponse.ImageResponse;
+import com.example.foodorderingapp.ServerResponse.UserResponse;
 import com.example.foodorderingapp.URL.Url;
 import com.example.foodorderingapp.strictmode.StrictModeClass;
 
@@ -34,8 +35,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     private CircleImageView imgProfile;
-
-    private EditText etname,etemail,etphone,etusername,etpassword;
+    private EditText etname, etemail, etphone, etusername, etpassword;
     private Button btnsignup;
     String imagepath;
     private String imageName = "";
@@ -69,17 +69,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                 saveimage();
 
-                //signup();
+                signup();
             }
         });
 
 
     }
 
-    public void Browseimage(){
+    public void Browseimage() {
         Intent i = new Intent(Intent.ACTION_PICK);
         i.setType("image/*");
-        startActivityForResult(i,0);
+        startActivityForResult(i, 0);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please select an image ", Toast.LENGTH_SHORT).show();
             }
         }
-       Uri uri = data.getData();
+        Uri uri = data.getData();
         imgProfile.setImageURI(uri);
         imagepath = getRealPathFromUri(uri);
     }
@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
         return result;
     }
 
-    private void saveimage(){
+    private void saveimage() {
         File file = new File(imagepath);
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("imageFile",
@@ -122,8 +122,8 @@ public class RegisterActivity extends AppCompatActivity {
         try {
             Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
             //Toast.makeText(this,""+imageResponseResponse,Toast.LENGTH_SHORT).show();
-           imageName = imageResponseResponse.body().getFilename();
-           Toast.makeText(this, "Image inserted" + imageName, Toast.LENGTH_SHORT).show();
+            imageName = imageResponseResponse.body().getFilename();
+            Toast.makeText(this, "Image inserted" + imageName, Toast.LENGTH_SHORT).show();
 
             //Toast.makeText(getApplicationContext(),"response:"+responseBodyCall,Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
@@ -133,8 +133,39 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    private void signup() {
+
+
+        String fname = etname.getText().toString();
+        String phone = etphone.getText().toString();
+        String email = etemail.getText().toString();
+        String username = etusername.getText().toString();
+        String password = etpassword.getText().toString();
+
+        User users = new User(fname,email,phone, username, password, imageName);
+
+        UserApi usersAPI = Url.getInstance().create(UserApi.class);
+        Call<UserResponse> signUpCall = usersAPI.signup(users);
+
+        signUpCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(RegisterActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
+}
 
 
 
