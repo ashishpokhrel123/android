@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 
 
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,13 +43,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static java.security.AccessController.getContext;
+
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private NavigationView nv;
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
-    private CircleImageView userprofile;
+    CircleImageView userprofile;
     TextView txt;
     Fragment selectedFragment = null;
     public static List<ExploreFood> lstexfood = new ArrayList<>();
@@ -54,6 +59,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public static  List<Restuarant> lstres = new ArrayList<>();
     public static  List<ExploreFood> lstpop = new ArrayList<>();
     SharedPreferences sharedPreferences;
+
+
 
 
 
@@ -66,12 +73,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
        // nv = findViewById(R.id.bottom_navigation);
          Toolbar toolbar = findViewById(R.id.app_bar);
          userprofile = findViewById(R.id.userprofile);
+         txt =findViewById(R.id.txtuser);
       getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
 
-
+            loaduser();
        //String token = sharedPreferences.getString("user_details","token");
 
 
@@ -82,8 +90,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                //updateNavigationviewHeader();
+                //loaduser();
 
-                updateNavigationviewHeader();
             }
 
             @Override
@@ -137,25 +146,25 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
 
-    private void updateNavigationviewHeader() {
-        nv = (NavigationView) findViewById(R.id.bottom_navigation);
-        nv.setNavigationItemSelectedListener(this);
-        View  header = nv.getHeaderView(0);
-
-
-        loaduser();
-
-
-
-        SharedPreferences sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
-        String user = sharedPreferences.getString("username","");
-
-        TextView username = (TextView) header.findViewById(R.id.txtuser);
-        username.setText(user);
-    }
+//    private void updateNavigationviewHeader() {
+//        nv = (NavigationView) findViewById(R.id.bottom_navigation);
+//        nv.setNavigationItemSelectedListener(this);
+//        View  header = nv.getHeaderView(0);
+//
+//
+//
+//
+//
+//
+//        SharedPreferences sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
+//        String user = sharedPreferences.getString("username","");
+//
+//        TextView username = (TextView) header.findViewById(R.id.txtuser);
+//        username.setText(user);
+//    }
 
     private void loaduser() {
-        UserApi userApi = Url.getInstance().create(UserApi.class);
+        final UserApi userApi = Url.getInstance().create(UserApi.class);
         Call<User>  usercall  = userApi.getuserdetails(Url.token);
 
         usercall.enqueue(new Callback<User>() {
@@ -166,9 +175,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     return;
                 }
 
-                String imagepath = Url.imagePath +response.body().getProfileimage();
 
-                Picasso.get().load(imagepath).into(userprofile);
+
+                    //txt.setText(response.body().getUsername());
+                    String imagepath = Url.imagePath +response.body().getProfileimage();
+                    Picasso.get().load(imagepath).into(userprofile);
+
+
 
             }
 
