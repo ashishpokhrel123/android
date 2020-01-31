@@ -1,6 +1,7 @@
 package com.example.foodorderingapp.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -50,6 +53,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public static List<HotDeals> lstdeals = new ArrayList<>();
     public static  List<Restuarant> lstres = new ArrayList<>();
     public static  List<ExploreFood> lstpop = new ArrayList<>();
+    SharedPreferences sharedPreferences;
 
 
 
@@ -66,6 +70,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
+
+
+       //String token = sharedPreferences.getString("user_details","token");
+
+
+
+
 
         dt = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
             @Override
@@ -89,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-         //txt  = findViewById(R.id.username);
+
 
 
 
@@ -124,6 +135,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     }
+
 
     private void updateNavigationviewHeader() {
         nv = (NavigationView) findViewById(R.id.bottom_navigation);

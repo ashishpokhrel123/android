@@ -71,15 +71,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-       txtreg = findViewById(R.id.tvSignUp);
+        txtreg = findViewById(R.id.tvSignUp);
 
-       txtreg.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
-               startActivity(i);
-           }
-       });
+        txtreg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
@@ -124,16 +124,17 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
 
 
     }
-  public void openDashBoard(){
+    public void openDashBoard(){
         Intent i = new Intent(LoginActivity.this,DashboardActivity.class);
         startActivity(i);
-  }
+    }
 
 
 
