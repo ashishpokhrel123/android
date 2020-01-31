@@ -111,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("username",etusername.getText().toString());
                     editor.putString("token", response.body().getToken());
 
+                    Url.token = response.body().getToken();
+
                     openDashBoard();
 
 
