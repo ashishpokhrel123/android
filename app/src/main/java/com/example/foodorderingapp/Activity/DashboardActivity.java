@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment;
 
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +36,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
-    CircleImageView userprofile;
+   // CircleImageView userprofile;
 
     Fragment selectedFragment = null;
     public static List<ExploreFood> lstexfood = new ArrayList<>();
@@ -77,7 +81,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
        // nv = findViewById(R.id.bottom_navigation);
          Toolbar toolbar = findViewById(R.id.app_bar);
-         userprofile = findViewById(R.id.userprofile);
+         //userprofile = findViewById(R.id.userprofile);
 
       getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
@@ -97,6 +101,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 super.onDrawerOpened(drawerView);
                 //updateNavigationviewHeader();
                 loaduser();
+                logout();
 
             }
 
@@ -150,6 +155,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+    private void logout() {
+
+
+    }
+
 
 //    private void updateNavigationviewHeader() {
 //        nv = (NavigationView) findViewById(R.id.bottom_navigation);
@@ -191,15 +201,29 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
                 String imgPath = Url.imagePath +  response.body().getProfileimage();
-                String email =  response.body().getEmail();
 
-                Toast.makeText(DashboardActivity.this,"image"+imgPath,Toast.LENGTH_SHORT).show();
-                Toast.makeText(DashboardActivity.this,"name"+email,Toast.LENGTH_SHORT).show();
+
+                String username =  response.body().getName();
+
+                Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
 
                 TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
+                ImageView profile = (ImageView) findViewById(R.id.userprofile);
 
-                navigationtxtuser.setText(email);
-               // Picasso.get().load(imgPath).into(userprofile);
+
+                 Picasso.get().load(imgPath).into(profile);
+
+
+                navigationtxtuser.setText(username);
+
+
+
+
+
+
+
+
 
 
 
