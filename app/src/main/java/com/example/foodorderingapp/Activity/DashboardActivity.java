@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,11 +29,15 @@ import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.Model.User;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
+import com.example.foodorderingapp.strictmode.StrictModeClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +57,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     ActionBarDrawerToggle dt;
 
     CircleImageView userprofile;
-    TextView txt;
+
     Fragment selectedFragment = null;
     public static List<ExploreFood> lstexfood = new ArrayList<>();
     public static List<HotDeals> lstdeals = new ArrayList<>();
@@ -73,13 +78,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
        // nv = findViewById(R.id.bottom_navigation);
          Toolbar toolbar = findViewById(R.id.app_bar);
          userprofile = findViewById(R.id.userprofile);
-         txt =findViewById(R.id.txtuser);
+
       getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
 
-            loaduser();
+            //loaduser();
        //String token = sharedPreferences.getString("user_details","token");
 
 
@@ -91,7 +96,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 //updateNavigationviewHeader();
-                //loaduser();
+                loaduser();
 
             }
 
@@ -177,9 +182,25 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-                    //txt.setText(response.body().getUsername());
-                    String imagepath = Url.imagePath +response.body().getProfileimage();
-                    Picasso.get().load(imagepath).into(userprofile);
+                    //txt.setText(user);
+                  // String imagepath = Url.imagePath +  response.body().getProfileimage();
+                   //Picasso.get().load(imagepath).into(userprofile);
+
+
+
+
+
+                String imgPath = Url.imagePath +  response.body().getProfileimage();
+                String email =  response.body().getEmail();
+
+                Toast.makeText(DashboardActivity.this,"image"+imgPath,Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this,"name"+email,Toast.LENGTH_SHORT).show();
+
+                TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
+
+                navigationtxtuser.setText(email);
+               // Picasso.get().load(imgPath).into(userprofile);
+
 
 
 
