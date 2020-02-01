@@ -209,13 +209,28 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
 
                 TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
-                ImageView profile = (ImageView) findViewById(R.id.userprofile);
-
-
-                 Picasso.get().load(imgPath).into(profile);
-
+                ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
 
                 navigationtxtuser.setText(username);
+//                StrictModeClass.StrictMode();
+//                try {
+//                    URL url=new URL(imgPath);
+//
+//                    profile.setImageBitmap( BitmapFactory.decodeStream(url.openConnection().getInputStream()));
+//                }catch (IOException e){
+//
+//
+//                e.printStackTrace();
+
+
+                try{
+
+                    Picasso.get().load(imgPath).into(profile);
+
+            }catch (Exception e){
+                    Picasso.get().load(R.drawable.burger).into(profile);
+
+                }
 
 
 
@@ -228,7 +243,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-            }
+
+        }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
