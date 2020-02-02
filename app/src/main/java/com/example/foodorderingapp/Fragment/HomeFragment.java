@@ -1,6 +1,7 @@
 package com.example.foodorderingapp.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.foodorderingapp.Activity.RestuarantActivity;
 import com.example.foodorderingapp.Adapater.ExplorefoodAdapater;
 import com.example.foodorderingapp.Adapater.HotDealsAdapater;
 import com.example.foodorderingapp.Adapater.PopularAdapater;
@@ -28,13 +31,15 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView,rv,recyclerView_res,rv_popular;
 
+    private TextView txtviewresturant;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-
+         txtviewresturant = v.findViewById(R.id.viewrestuarnt);
 
         recyclerView = v.findViewById(R.id.popular_recyclerview);
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);
@@ -57,6 +62,16 @@ public class HomeFragment extends Fragment {
         PopularAdapater popularAdapater = new PopularAdapater(getContext(),lstpop);
         rv_popular.setAdapter(popularAdapater);
         rv_popular.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
+
+        txtviewresturant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), RestuarantActivity.class);
+                i.putExtra("name","KFC");
+                startActivity(i);
+            }
+        });
 
 
 
