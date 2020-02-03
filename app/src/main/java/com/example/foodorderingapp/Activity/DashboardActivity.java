@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,6 +53,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.foodorderingapp.URL.Url.token;
 import static java.security.AccessController.getContext;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,6 +61,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private NavigationView nv;
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
+
+    //TextView logout;
 
    // CircleImageView userprofile;
 
@@ -87,6 +91,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
+
+
+
 
             //loaduser();
        //String token = sharedPreferences.getString("user_details","token");
@@ -157,6 +164,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     private void logout() {
 
+        if(token !="Bearer "){
+            token = "Bearer ";
+        }
+
 
     }
 
@@ -180,7 +191,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     private void loaduser() {
         final UserApi userApi = Url.getInstance().create(UserApi.class);
-        Call<User>  usercall  = userApi.getuserdetails(Url.token);
+        Call<User>  usercall  = userApi.getuserdetails(token);
 
         usercall.enqueue(new Callback<User>() {
             @Override
@@ -271,11 +282,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 getSupportFragmentManager().beginTransaction().replace(R.id.container,
                         new HomeFragment()).commit();
                 break;
+            case R.id.account:
+                logout();
+                Intent i = new Intent(DashboardActivity.this,LoginActivity.class);
+                startActivity(i);
 
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }

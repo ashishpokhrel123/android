@@ -1,7 +1,12 @@
 package com.example.foodorderingapp.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Restuarant {
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("image")
     private int image;
 
     public Restuarant(String name, int image) {
