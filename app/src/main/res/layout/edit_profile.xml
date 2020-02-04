@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="#ccc">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvPlayerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player Name"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:textColor="#011"/>
+
+        <ImageView
+            android:id="@+id/ivClosePlayerDialog"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/circular_bg"
+            android:src="@drawable/ic_close_24dp"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvPlayerJerseyNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jersey No"
+        android:textSize="15sp"
+        android:padding="5dp"/>
+
+
+    <!--<EditText-->
+    <!--android:id="@+id/etEditPlayerDob"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:singleLine="true"-->
+    <!--android:hint="e.g. 30/12/2000"-->
+    <!--android:inputType="date"-->
+    <!--android:focusable="false"-->
+    <!--android:clickable="false"/>-->
+
+    <TextView
+        android:id="@+id/tvPlayerRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerBatHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BatHand"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerBowlHand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BowlHand"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerBowlStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BowlStyle"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerNationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nationality"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team"
+        android:textSize="20sp"
+        android:padding="5dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivDeletePlayer"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/ic_delete_24dp"
+            android:padding="15dp"
+            android:background="@drawable/circular_bg"
+            android:layout_below="@+id/etEditHomeGround"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

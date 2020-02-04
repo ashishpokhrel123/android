@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
+     private Button btnedit;
+
     //TextView logout;
 
    // CircleImageView userprofile;
@@ -91,6 +94,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
+        btnedit = findViewById(R.id.edituser);
+
+        /* btnedit.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent i = new Intent(DashboardActivity.this,EditProfile.class);
+                 startActivity(i);
+             }
+         });*/
+
 
 
 
@@ -223,22 +236,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
 
                 navigationtxtuser.setText(username);
-//                StrictModeClass.StrictMode();
-//                try {
-//                    URL url=new URL(imgPath);
-//
-//                    profile.setImageBitmap( BitmapFactory.decodeStream(url.openConnection().getInputStream()));
-//                }catch (IOException e){
-//
-//
-//                e.printStackTrace();
-
-
                 try{
 
                     Picasso.get().load(imgPath).into(profile);
 
-            }catch (Exception e){
+                 }catch (Exception e){
                     Picasso.get().load(R.drawable.burger).into(profile);
 
                 }
