@@ -12,6 +12,7 @@
             android:id="@+id/rest_img"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:src="@drawable/burger"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="0dp"/>
 

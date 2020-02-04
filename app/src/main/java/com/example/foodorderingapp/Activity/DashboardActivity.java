@@ -63,7 +63,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
-     private Button btnedit;
+    Button btnedit;
 
     //TextView logout;
 
@@ -96,25 +96,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         nv.setNavigationItemSelectedListener(this);
         btnedit = findViewById(R.id.edituser);
 
-        /* btnedit.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent i = new Intent(DashboardActivity.this,EditProfile.class);
-                 startActivity(i);
-             }
-         });*/
-
-
-
-
-
-            //loaduser();
-       //String token = sharedPreferences.getString("user_details","token");
-
-
-
-
-
+        btnedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DashboardActivity.this,EditProfile.class);
+                startActivity(i);
+            }
+        });
         dt = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -124,6 +112,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 logout();
 
             }
+
 
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -135,14 +124,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer.addDrawerListener(dt);
 
         dt.syncState();
-
-
-
-
-
-
-
-
         lstexfood = new ArrayList<>();
         lstexfood.add(new ExploreFood(R.drawable.foodupd,"Food"));
         lstexfood.add(new ExploreFood(R.drawable.bervage,"Berveage"));
@@ -183,25 +164,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     }
-
-
-//    private void updateNavigationviewHeader() {
-//        nv = (NavigationView) findViewById(R.id.bottom_navigation);
-//        nv.setNavigationItemSelectedListener(this);
-//        View  header = nv.getHeaderView(0);
-//
-//
-//
-//
-//
-//
-//        SharedPreferences sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
-//        String user = sharedPreferences.getString("username","");
-//
-//        TextView username = (TextView) header.findViewById(R.id.txtuser);
-//        username.setText(user);
-//    }
-
     private void loaduser() {
         final UserApi userApi = Url.getInstance().create(UserApi.class);
         Call<User>  usercall  = userApi.getuserdetails(token);
@@ -213,28 +175,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     Toast.makeText(DashboardActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-
-
-                    //txt.setText(user);
-                  // String imagepath = Url.imagePath +  response.body().getProfileimage();
-                   //Picasso.get().load(imagepath).into(userprofile);
-
-
-
-
-
                 String imgPath = Url.imagePath +  response.body().getProfileimage();
-
-
                 String username =  response.body().getName();
-
                 Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
-                Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
-
-                TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
+                Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
                 ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
-
                 navigationtxtuser.setText(username);
                 try{
 
@@ -244,20 +189,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     Picasso.get().load(R.drawable.burger).into(profile);
 
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
+            }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {

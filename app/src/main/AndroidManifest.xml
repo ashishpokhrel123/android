@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.EditProfile"></activity>
+        <activity android:name=".Activity.FoodActivity"></activity>
+        <activity android:name=".Activity.EditProfile" />
         <activity android:name=".Activity.RestuarantActivity" />
         <activity android:name=".Activity.DashboardActivity" />
         <activity android:name=".Activity.RegisterActivity" />
@@ -31,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -28,6 +28,5 @@ public interface UserApi {
     @GET("users/me")
     Call<User> getuserdetails (@Header("Authorization")String token);
 
-    @GET("users/logout")
-    Call<Void> logout (@Header("Authorization")String token);
+
 }
