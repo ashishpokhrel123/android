@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodorderingapp.Activity.CartActivity;
 import com.example.foodorderingapp.Activity.FoodActivity;
 import com.example.foodorderingapp.Activity.RestuarantActivity;
 import com.example.foodorderingapp.Adapater.ExplorefoodAdapater;
@@ -35,6 +37,8 @@ public class HomeFragment extends Fragment {
 
     private TextView txtviewresturant;
 
+    private ImageView cartimage;
+
     private Button btnviewresturant;
 
     @Override
@@ -50,6 +54,7 @@ public class HomeFragment extends Fragment {
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);
         recyclerView_res = v.findViewById(R.id.recycler_restuarnt);
         rv_popular = v.findViewById(R.id.recycler_populattoday);
+        cartimage = v.findViewById(R.id.cartlist);
 
         ExplorefoodAdapater adapater = new ExplorefoodAdapater(getContext(),lstexfood);
         recyclerView.setAdapter(adapater);
@@ -76,6 +81,8 @@ public class HomeFragment extends Fragment {
                startActivity(i);
            }
        });
+
+
 
 
 

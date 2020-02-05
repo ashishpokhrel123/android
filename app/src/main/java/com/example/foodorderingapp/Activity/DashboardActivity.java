@@ -63,6 +63,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
+    ImageView cartimg;
+
     Button btnviewfood;
 
     //TextView logout;
@@ -94,6 +96,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
+        cartimg = findViewById(R.id.cartlist);
 
         dt = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
             @Override
@@ -145,7 +148,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             nv.setCheckedItem(R.id.home);
         }
 
-
+      cartimg.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent i  = new Intent(DashboardActivity.this,CartActivity.class);
+              startActivity(i);
+          }
+      });
     }
 
     private void logout() {
