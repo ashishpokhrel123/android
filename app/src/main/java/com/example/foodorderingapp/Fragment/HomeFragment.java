@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.foodorderingapp.Activity.FoodActivity;
 import com.example.foodorderingapp.Activity.RestuarantActivity;
 import com.example.foodorderingapp.Adapater.ExplorefoodAdapater;
 import com.example.foodorderingapp.Adapater.HotDealsAdapater;
@@ -33,13 +35,16 @@ public class HomeFragment extends Fragment {
 
     private TextView txtviewresturant;
 
+    private Button btnviewresturant;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-         txtviewresturant = v.findViewById(R.id.viewrestuarnt);
+         //txtviewresturant = v.findViewById(R.id.viewrestuarnt);
+         btnviewresturant = v.findViewById(R.id.viewrestuarnt);
 
         recyclerView = v.findViewById(R.id.popular_recyclerview);
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);
@@ -64,14 +69,13 @@ public class HomeFragment extends Fragment {
         rv_popular.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
 
 
-        txtviewresturant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), RestuarantActivity.class);
-                i.putExtra("name","KFC");
-                startActivity(i);
-            }
-        });
+       btnviewresturant.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent i = new Intent(getContext(), FoodActivity.class);
+               startActivity(i);
+           }
+       });
 
 
 

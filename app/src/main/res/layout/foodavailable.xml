@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+
+
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="300dp">
@@ -14,7 +18,7 @@
         android:id="@+id/food_img"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/burger"
+        android:src="@drawable/sandwiche"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"/>
 
@@ -47,7 +51,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/abril_regular"
             android:text="Sinamangal,Kathmandu"
-            android:layout_below="@id/res_text"
+            android:layout_below="@id/rest_name"
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:textStyle="bold" />

@@ -63,7 +63,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
-    Button btnedit;
+    Button btnviewfood;
 
     //TextView logout;
 
@@ -94,15 +94,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
-        btnedit = findViewById(R.id.edituser);
 
-        btnedit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DashboardActivity.this,EditProfile.class);
-                startActivity(i);
-            }
-        });
         dt = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
             @Override
             public void onDrawerOpened(View drawerView) {

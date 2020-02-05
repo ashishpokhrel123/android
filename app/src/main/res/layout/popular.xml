@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:foreground="?android:attr/selectableItemBackground"
+<androidx.cardview.widget.CardView
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="100dp"
     android:layout_height="120dp"
     android:clickable="true"
