@@ -1,10 +1,12 @@
 package com.example.foodorderingapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.foodorderingapp.Adapater.RestaurantFoodAdapter;
 import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.R;
 
@@ -22,10 +24,23 @@ public class FooddetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fooddetails);
+        recyclerView = findViewById(R.id.food_recyclerview);
 
-        recyclerView = findViewById(R.id.recyclerview_food);
 
         lstfood = new ArrayList<>();
+
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+
+
+        RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(this,lstfood);
+        recyclerView.setAdapter(resfoodadapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
 
 

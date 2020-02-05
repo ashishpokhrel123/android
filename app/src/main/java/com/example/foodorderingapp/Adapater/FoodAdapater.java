@@ -1,6 +1,7 @@
 package com.example.foodorderingapp.Adapater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodorderingapp.Activity.FooddetailsActivity;
 import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.R;
 
@@ -40,6 +42,16 @@ public class FoodAdapater extends RecyclerView.Adapter<FoodAdapater.FoodViewhold
     public void onBindViewHolder(@NonNull FoodViewholder holder, int position) {
         Food food = lstfood.get(position);
         holder.txtrest_name.setText(food.getResturant());
+
+
+
+        holder.txtrest_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mcontext, FooddetailsActivity.class);
+                v.getContext().startActivity(new Intent(v.getContext(), FooddetailsActivity.class));
+            }
+        });
 
     }
 
