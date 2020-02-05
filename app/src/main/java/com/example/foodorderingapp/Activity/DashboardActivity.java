@@ -220,7 +220,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.account:
                 logout();
                 Intent i = new Intent(DashboardActivity.this,LoginActivity.class);
+                i.setFlags(i.FLAG_ACTIVITY_CLEAR_TASK); // clear all previous activity
                 startActivity(i);
+                finish();
 
         }
         drawer.closeDrawer(GravityCompat.START);

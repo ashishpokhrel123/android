@@ -17,5 +17,7 @@
 
     <style name="AppTheme.PopOverlay"></style>
 
+    <style name="CustomRatingLevel"></style>
+
 
 </resources>
