@@ -30,7 +30,7 @@ public interface UserApi {
     Call<User> getuserdetails (@Header("Authorization")String token);
 
     @PUT("users/me")
-    Call<User> updateuser (@Header("Authorization")String token);
+    Call<User> updateuser (@Header("Authorization")String token,@Body User user);
 
 
 }

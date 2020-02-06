@@ -63,6 +63,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
+    public  static  User globaluser;
+
     ImageView cartimg;
 
     Button btnviewfood;
@@ -97,14 +99,19 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
         cartimg = findViewById(R.id.cartlist);
+           loaduser();
+
+
+
 
         dt = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 //updateNavigationviewHeader();
-                loaduser();
-                logout();
+
+
+
 
             }
 
@@ -155,17 +162,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
               startActivity(i);
           }
       });
-    }
 
-    private void logout() {
-
-        if(token !="Bearer "){
-            token = "Bearer ";
-        }
 
 
     }
+
     private void loaduser() {
+
         final UserApi userApi = Url.getInstance().create(UserApi.class);
         Call<User>  usercall  = userApi.getuserdetails(token);
 
@@ -176,20 +179,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     Toast.makeText(DashboardActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                globaluser = response.body();
                 String imgPath = Url.imagePath +  response.body().getProfileimage();
                 String username =  response.body().getName();
                 Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
                 Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
                 ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
                 navigationtxtuser.setText(username);
-                try{
 
-                    Picasso.get().load(imgPath).into(profile);
-
-                 }catch (Exception e){
-                    Picasso.get().load(R.drawable.burger).into(profile);
-
-                }
             }
 
             @Override
@@ -199,6 +197,24 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
     }
+
+
+    private void profileupdate() {
+
+        Intent i = new Intent(DashboardActivity.this,EditProfile.class);
+        startActivity(i);
+    }
+
+    private void logout() {
+
+        if(token !="Bearer "){
+            token = "Bearer ";
+        }
+
+
+    }
+
+
 
 
     @Override
@@ -216,6 +232,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container,
                         new HomeFragment()).commit();
+                break;
+
+            case R.id.editprofile:
+                profileupdate();
                 break;
             case R.id.account:
                 logout();

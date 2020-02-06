@@ -20,6 +20,11 @@
 
         android:title="Near By"
         android:icon="@drawable/item"/>
+    <item
+        android:id="@+id/editprofile"
+
+        android:title="Edit Profile"
+        android:icon="@drawable/userprofile"/>
 
     <item
         android:id="@+id/account"

@@ -24,6 +24,14 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public User(String name, String phone,String email)
+    {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+
+    }
     public String getProfileimage() {
         return profileimage;
     }

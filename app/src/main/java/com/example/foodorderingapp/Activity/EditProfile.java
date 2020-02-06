@@ -33,6 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.foodorderingapp.Activity.DashboardActivity.globaluser;
 import static com.example.foodorderingapp.URL.Url.token;
 
 public class EditProfile extends AppCompatActivity {
@@ -59,84 +60,25 @@ public class EditProfile extends AppCompatActivity {
         btnupdate = findViewById(R.id.updateuser);
 
 
-        userprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Browseimage();
-            }
-
-
-        });
-
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                saveimage();
 
                 updateuser();
             }
         });
 
+        upname.setText(globaluser.getName());
+        upemail.setText(globaluser.getEmail());
+        upphone.setText(globaluser.getPhone());
+        upusername.setText(globaluser.getUsername());
+
+        //uppassword.setText(globaluser.getPassword());
+
 
     }
 
-    public void Browseimage() {
-        Intent i = new Intent(Intent.ACTION_PICK);
-        i.setType("image/*");
-        startActivityForResult(i, 0);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            if (data == null) {
-                Toast.makeText(this, "Please select an image ", Toast.LENGTH_SHORT).show();
-            }
-        }
-        Uri uri = data.getData();
-        userprofile.setImageURI(uri);
-        imagepath = getRealPathFromUri(uri);
-    }
-
-    private String getRealPathFromUri(Uri uri) {
-        String[] projection = {MediaStore.Images.Media.DATA};
-        CursorLoader loader = new CursorLoader(getApplicationContext(),
-                uri, projection, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int colIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result = cursor.getString(colIndex);
-        cursor.close();
-        return result;
-    }
-
-    private void saveimage() {
-        File file = new File(imagepath);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData("imageFile",
-                file.getName(), requestBody);
-
-        UserApi userApi = Url.getInstance().create(UserApi.class);
-        Call<ImageResponse> responseBodyCall = userApi.uploadimage(body);
-
-        StrictModeClass.StrictMode();
-        //Synchronous methid
-        try {
-            Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
-            //Toast.makeText(this,""+imageResponseResponse,Toast.LENGTH_SHORT).show();
-            imageName = imageResponseResponse.body().getFilename();
-            Toast.makeText(this, "Image inserted" + imageName, Toast.LENGTH_SHORT).show();
-
-            //Toast.makeText(getApplicationContext(),"response:"+responseBodyCall,Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            Toast.makeText(this, "Error" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-
-    }
 
     private void updateuser() {
 
@@ -144,35 +86,35 @@ public class EditProfile extends AppCompatActivity {
         String fname = upname.getText().toString();
         String email = upemail.getText().toString();
         String phone = upphone.getText().toString();
-        String username = upusername.getText().toString();
-        String password = uppassword.getText().toString();
 
-        User users = new User(fname,email,phone, username, password, imageName);
+
+        User users = new User(fname, email, phone);
 
         UserApi usersAPI = Url.getInstance().create(UserApi.class);
-        Call<User> updateuser = usersAPI.updateuser(token);
+        Call<User> updateuser = usersAPI.updateuser(token, users);
 
         updateuser.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+                               @Override
+                               public void onResponse(Call<User> call, Response<User> response) {
 
-                if(!response.isSuccessful()){
-                    Toast.makeText(EditProfile.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
-                    return;
+                                   if (!response.isSuccessful()) {
+                                       Toast.makeText(EditProfile.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                                       return;
 
-            }
-
-
-
+                                   }
+                                   Toast.makeText(EditProfile.this, "Profile updated Succesfully", Toast.LENGTH_SHORT).show();
 
 
+                               }
 
+                               @Override
+                               public void onFailure(Call<User> call, Throwable t) {
 
-
+                               }
+                           }
+        );
     }
+}
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
 
-            }
-        }
+
