@@ -41,7 +41,7 @@ public class FoodAdapater extends RecyclerView.Adapter<FoodAdapater.FoodViewhold
     @Override
     public void onBindViewHolder(@NonNull FoodViewholder holder, int position) {
         Food food = lstfood.get(position);
-        holder.txtrest_name.setText(food.getResturant());
+        holder.txtrest_name.setText("KFC");
 
 
 

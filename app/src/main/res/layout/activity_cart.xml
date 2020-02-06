@@ -20,7 +20,7 @@
        android:id="@+id/cart_toolbar"
          android:layout_width="match_parent"
          android:layout_height="?attr/actionBarSize"
-         android:background="@color/red"
+         android:background="@color/colorPrimary"
        app:titleTextColor="@color/white"
        app:popupTheme="@style/AppTheme.PopOverlay"/>
    </com.google.android.material.appbar.AppBarLayout>
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
           android:text="Total cost"
-          android:textColor="@color/red"
+          android:textColor="@color/colorPrimary"
           android:fontFamily="@font/abril_regular"
           android:layout_weight="4"/>
         
@@ -68,7 +68,7 @@
           android:id="@+id/final_price"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:textColor="@color/red"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="4"
           android:gravity="right"
           android:text="500"/>
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
       android:text="Order"
       android:textColor="@color/white"
-      android:background="@color/red"
+      android:background="@color/colorPrimary"
       android:layout_marginTop="8dp"
       android:layout_marginBottom="8dp"
       android:fontFamily="@font/roboto_medium"/>

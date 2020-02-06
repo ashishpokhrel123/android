@@ -29,12 +29,7 @@ public class FooddetailsActivity extends AppCompatActivity {
 
         lstfood = new ArrayList<>();
 
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
+
 
 
         RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(this,lstfood);

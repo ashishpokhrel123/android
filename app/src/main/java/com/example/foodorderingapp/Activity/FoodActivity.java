@@ -30,10 +30,6 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-        foodlist =new ArrayList<>();
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aAs"));
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aUs"));
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aJs"));
 
 
         FoodAdapater foodAdapater = new FoodAdapater(this,foodlist);

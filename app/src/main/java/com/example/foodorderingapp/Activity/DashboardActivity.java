@@ -26,8 +26,10 @@ import android.widget.Toast;
 
 
 import com.example.foodorderingapp.Fragment.HomeFragment;
+import com.example.foodorderingapp.Interface.FoodApi;
 import com.example.foodorderingapp.Interface.UserApi;
 import com.example.foodorderingapp.Model.ExploreFood;
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.HotDeals;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.Model.User;
@@ -54,6 +56,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.foodorderingapp.URL.Url.getInstance;
 import static com.example.foodorderingapp.URL.Url.token;
 import static java.security.AccessController.getContext;
 
@@ -75,7 +78,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     Fragment selectedFragment = null;
     public static List<ExploreFood> lstexfood = new ArrayList<>();
-    public static List<HotDeals> lstdeals = new ArrayList<>();
+    public static List<Food> lstdeals = new ArrayList<>();
     public static  List<Restuarant> lstres = new ArrayList<>();
     public static  List<ExploreFood> lstpop = new ArrayList<>();
     SharedPreferences sharedPreferences;
@@ -89,17 +92,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
-       // nv = findViewById(R.id.bottom_navigation);
          Toolbar toolbar = findViewById(R.id.app_bar);
-         //userprofile = findViewById(R.id.userprofile);
-
-      getSupportActionBar().hide();
+         getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
         cartimg = findViewById(R.id.cartlist);
            loaduser();
+
+
 
 
 
@@ -133,10 +134,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         lstexfood.add(new ExploreFood(R.drawable.ffries,"Drink and Snacks"));
 
 
-        lstdeals = new ArrayList<>();
-        lstdeals.add(new HotDeals(R.drawable.burger1));
-        lstdeals.add(new HotDeals(R.drawable.chickenfried));
-        lstdeals.add(new HotDeals(R.drawable.pizza));
+
 
         lstres = new ArrayList<>();
         lstres.add(new Restuarant("KFC",R.drawable.fries));
@@ -166,6 +164,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     }
+
+
 
     private void loaduser() {
 

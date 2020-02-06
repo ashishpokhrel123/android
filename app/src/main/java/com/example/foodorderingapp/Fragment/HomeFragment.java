@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodorderingapp.Activity.CartActivity;
 import com.example.foodorderingapp.Activity.FoodActivity;
@@ -24,7 +25,16 @@ import com.example.foodorderingapp.Adapater.ExplorefoodAdapater;
 import com.example.foodorderingapp.Adapater.HotDealsAdapater;
 import com.example.foodorderingapp.Adapater.PopularAdapater;
 import com.example.foodorderingapp.Adapater.RestuarantAdapater;
+import com.example.foodorderingapp.Interface.FoodApi;
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.R;
+import com.example.foodorderingapp.URL.Url;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstdeals;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstexfood;
@@ -56,14 +66,13 @@ public class HomeFragment extends Fragment {
         rv_popular = v.findViewById(R.id.recycler_populattoday);
         cartimage = v.findViewById(R.id.cartlist);
 
+        getCategory();
+
         ExplorefoodAdapater adapater = new ExplorefoodAdapater(getContext(),lstexfood);
         recyclerView.setAdapter(adapater);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
 
 
-        HotDealsAdapater hotDealsAdapater = new HotDealsAdapater(getContext(),lstdeals);
-        rv.setAdapter(hotDealsAdapater);
-        rv.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
 
         RestuarantAdapater restuarantAdapater = new RestuarantAdapater(getContext(),lstres);
         recyclerView_res.setAdapter(restuarantAdapater);
@@ -90,6 +99,35 @@ public class HomeFragment extends Fragment {
 
 
     }
+
+    private void getCategory(){
+
+        FoodApi foodApi = Url.getInstance().create(FoodApi.class);
+        Call<List<Food>> foodCall = foodApi.getcategory(Url.token);
+
+          foodCall.enqueue(new Callback<List<Food>>() {
+              @Override
+              public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
+                  if(!response.isSuccessful()){
+                      Toast.makeText(getContext(),"Error"+response.code(),Toast.LENGTH_SHORT).show();
+                  }
+                  lstdeals = response.body();
+
+                  HotDealsAdapater hotDealsAdapater = new HotDealsAdapater(getContext(),lstdeals);
+                  rv.setAdapter(hotDealsAdapater);
+                  rv.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
+              }
+
+              @Override
+              public void onFailure(Call<List<Food>> call, Throwable t) {
+
+                  Toast.makeText(getContext(),"Error",Toast.LENGTH_SHORT).show();
+
+              }
+          });
+    }
+
 
 
 }
