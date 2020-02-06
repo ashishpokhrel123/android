@@ -107,6 +107,7 @@
                     android:layout_height="30dp"
                     android:background="@null"
                     android:textSize="18sp"
+                    android:clickable="true"
                     android:text="-"/>
 
                 <TextView
@@ -125,6 +126,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@null"
+                    android:clickable="true"
                     android:textSize="18sp"
                     android:text="+"/>
 
@@ -159,7 +161,7 @@
                 android:text="Total"/>
 
             <TextView
-                android:id="@+id/txtcost"
+                android:id="@+id/totatcost"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

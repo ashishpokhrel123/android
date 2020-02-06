@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.OrderActivity"></activity>
+        <activity android:name=".Notification.NotificationActivity"></activity>
+        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.FooddetailsActivity" />
         <activity android:name=".Activity.CartActivity" />
         <activity android:name=".Activity.FoodActivity" />
@@ -27,7 +28,7 @@
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.OrderActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
