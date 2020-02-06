@@ -2,31 +2,44 @@ package com.example.foodorderingapp.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Restuarant {
-    @SerializedName("name")
-    private String name;
 
-    @SerializedName("image")
-    private int image;
+    private String resturantname;
+    private String resturantaddress;
+    private  String foodimage;
 
-    public Restuarant(String name, int image) {
-        this.name = name;
-        this.image = image;
+
+
+    public Restuarant(String resturantname, String resturantaddress, String foodimage) {
+        this.resturantname = resturantname;
+        this.resturantaddress = resturantaddress;
+        this.foodimage = foodimage;
     }
 
-    public String getName() {
-        return name;
+    public String getResturantname() {
+        return resturantname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setResturantname(String resturantname) {
+        this.resturantname = resturantname;
     }
 
-    public int getImage() {
-        return image;
+    public String getResturantaddress() {
+        return resturantaddress;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setResturantaddress(String resturantaddress) {
+        this.resturantaddress = resturantaddress;
+    }
+
+
+    public String getFoodimage() {
+        return foodimage;
+    }
+
+    public void setFoodimage(String foodimage) {
+        this.foodimage = foodimage;
     }
 }

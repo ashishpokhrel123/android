@@ -136,10 +136,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
-        lstres = new ArrayList<>();
-        lstres.add(new Restuarant("KFC",R.drawable.fries));
-        lstres.add(new Restuarant("Burger House",R.drawable.burger));
-        lstres.add(new Restuarant("Hotel Annapurna",R.drawable.pasta));
+
 
         lstpop = new ArrayList<>();
         lstpop.add(new ExploreFood(R.drawable.momo,"Momo"));

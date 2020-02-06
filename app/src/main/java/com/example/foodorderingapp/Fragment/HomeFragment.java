@@ -26,7 +26,9 @@ import com.example.foodorderingapp.Adapater.HotDealsAdapater;
 import com.example.foodorderingapp.Adapater.PopularAdapater;
 import com.example.foodorderingapp.Adapater.RestuarantAdapater;
 import com.example.foodorderingapp.Interface.FoodApi;
+import com.example.foodorderingapp.Interface.RestuarantApi;
 import com.example.foodorderingapp.Model.Food;
+import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
@@ -67,6 +69,7 @@ public class HomeFragment extends Fragment {
         cartimage = v.findViewById(R.id.cartlist);
 
         getCategory();
+        getRestuarant();
 
         ExplorefoodAdapater adapater = new ExplorefoodAdapater(getContext(),lstexfood);
         recyclerView.setAdapter(adapater);
@@ -74,9 +77,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        RestuarantAdapater restuarantAdapater = new RestuarantAdapater(getContext(),lstres);
-        recyclerView_res.setAdapter(restuarantAdapater);
-        recyclerView_res.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
 
         PopularAdapater popularAdapater = new PopularAdapater(getContext(),lstpop);
         rv_popular.setAdapter(popularAdapater);
@@ -126,6 +127,34 @@ public class HomeFragment extends Fragment {
 
               }
           });
+    }
+
+    private void getRestuarant()
+    {
+        RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getresturant(Url.token);
+
+
+        restuarantCall.enqueue(new Callback<List<Restuarant>>() {
+            @Override
+            public void onResponse(Call<List<Restuarant>> call, Response<List<Restuarant>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(getContext(),"Error"+response.code(),Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                lstres = response.body();
+
+                RestuarantAdapater restuarantAdapater = new RestuarantAdapater(getContext(),lstres);
+                recyclerView_res.setAdapter(restuarantAdapater);
+                recyclerView_res.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+            }
+
+            @Override
+            public void onFailure(Call<List<Restuarant>> call, Throwable t) {
+
+            }
+        });
+
     }
 
 

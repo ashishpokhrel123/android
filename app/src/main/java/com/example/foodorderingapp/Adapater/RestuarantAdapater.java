@@ -1,6 +1,7 @@
 package com.example.foodorderingapp.Adapater;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
+import com.example.foodorderingapp.URL.Url;
+import com.example.foodorderingapp.strictmode.StrictModeClass;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.RestuarantViewHolder> {
@@ -37,8 +42,15 @@ public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.
     public void onBindViewHolder(@NonNull RestuarantViewHolder holder, int position) {
 
         Restuarant res = lstres.get(position);
-        holder.imgres.setImageResource(res.getImage());
-        holder.txtres.setText(res.getName());
+
+        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getFoodimage();
+
+        StrictModeClass.StrictMode();
+        try {
+            URL url=new URL(imagepath);
+            holder.imgres.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (Exception e) {
+        }
 
     }
 
