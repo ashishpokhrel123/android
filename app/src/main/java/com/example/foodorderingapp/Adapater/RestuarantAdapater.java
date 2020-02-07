@@ -44,7 +44,6 @@ public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.
         Restuarant res = lstres.get(position);
 
         String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getFoodimage();
-
         StrictModeClass.StrictMode();
         try {
             URL url=new URL(imagepath);

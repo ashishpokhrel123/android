@@ -10,8 +10,10 @@ public class Url {
     //public static final String BASE_URL= "http://192.168.137.19:3002/";
     //public static final String BASE_URL = "http://192.168.43.228:3002/";
     //public static final String BASE_URL ="http://172.26.8.61:3002/";
-    public static final String BASE_URL ="http://192.168.43.228:3002/";
+    public static final String BASE_URL ="http://192.168.137.43:3002/";
     //public static final String BASE_URL ="http://192.168.0.122:3002/";
+
+    //public static final String  BASE_URL="http://172.26.2.34:3002/";
 
 
     public static String token = "Bearer ";
