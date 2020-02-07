@@ -8,14 +8,17 @@ public class Restuarant {
 
     private String resturantname;
     private String resturantaddress;
-    private  String foodimage;
 
 
 
-    public Restuarant(String resturantname, String resturantaddress, String foodimage) {
+
+
+
+
+    public Restuarant(String resturantname, String resturantaddress) {
         this.resturantname = resturantname;
         this.resturantaddress = resturantaddress;
-        this.foodimage = foodimage;
+
     }
 
     public String getResturantname() {
@@ -35,11 +38,7 @@ public class Restuarant {
     }
 
 
-    public String getFoodimage() {
-        return foodimage;
-    }
 
-    public void setFoodimage(String foodimage) {
-        this.foodimage = foodimage;
-    }
+
+
 }

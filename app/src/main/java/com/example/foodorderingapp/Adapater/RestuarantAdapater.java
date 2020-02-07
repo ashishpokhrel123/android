@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
@@ -43,7 +44,7 @@ public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.
 
         Restuarant res = lstres.get(position);
 
-        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getFoodimage();
+        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getResturantaddress();
         StrictModeClass.StrictMode();
         try {
             URL url=new URL(imagepath);
