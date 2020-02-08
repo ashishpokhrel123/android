@@ -10,6 +10,6 @@ import retrofit2.http.Header;
 
 public interface RestuarantApi {
 
-    @GET("resturants/id")
-    Call<List<Restuarant>> getresturant (@Header("Authorization")String token);
+    @GET("resturants")
+    Call<List<Restuarant>> getres (@Header("Authorization")String token);
 }

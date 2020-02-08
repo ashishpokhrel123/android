@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
     private void getRestuarant()
     {
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.getresturant(Url.token);
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getres(Url.token);
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
