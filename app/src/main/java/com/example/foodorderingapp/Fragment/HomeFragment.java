@@ -87,7 +87,7 @@ public class HomeFragment extends Fragment {
        btnviewresturant.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent i = new Intent(getContext(), FoodActivity.class);
+               Intent i = new Intent(getContext(), RestuarantActivity.class);
                startActivity(i);
            }
        });
