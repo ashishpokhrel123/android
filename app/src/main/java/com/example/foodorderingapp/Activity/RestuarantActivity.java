@@ -66,9 +66,6 @@ public class RestuarantActivity extends AppCompatActivity {
                 }
                 lstrest = response.body();
 
-                RestuarantAdapater radapter = new RestuarantAdapater(RestuarantActivity.this,lstrest);
-                rv.setAdapter(radapter);
-                rv.setLayoutManager(new LinearLayoutManager(RestuarantActivity.this));
             }
 
             @Override
@@ -76,6 +73,10 @@ public class RestuarantActivity extends AppCompatActivity {
 
             }
         });
+
+        RestuarantAdapater radapter = new RestuarantAdapater(RestuarantActivity.this,lstrest);
+        rv.setAdapter(radapter);
+        rv.setLayoutManager(new LinearLayoutManager(this));
 
     }
 }
