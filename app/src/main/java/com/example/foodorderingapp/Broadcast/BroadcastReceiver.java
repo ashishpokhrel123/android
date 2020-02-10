@@ -25,29 +25,23 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
 
         boolean noConnectivity;
         notificationManagerCompat = NotificationManagerCompat.from(mcontext);
-        if(ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())){
-            noConnectivity = intent.getBooleanExtra(
-                    ConnectivityManager.EXTRA_NO_CONNECTIVITY,false
-            );
-            if(noConnectivity){
-                Toast.makeText(context,"Disconnected",Toast.LENGTH_SHORT).show();
+
                 notification1();
-            } else {
-                Toast.makeText(context,"connected",Toast.LENGTH_SHORT).show();
+
                 notification2();
 
-            }
+
 
         }
 
 
-    }
+
 
     private void notification1() {
         Notification notification=new NotificationCompat.Builder(mcontext, Channel.channel_1)
-                .setSmallIcon(R.drawable.cart)
+                .setSmallIcon(R.drawable.lo)
                 .setContentTitle("Food ordering")
-                .setContentText("No internet connection, please connect")
+                .setContentText("10% dsicount")
                 .setCategory(NotificationCompat.CATEGORY_SYSTEM)
                 .build();
 
@@ -57,9 +51,9 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
     private void notification2()
     {
         Notification notification=new NotificationCompat.Builder(mcontext, Channel.channel_2)
-                .setSmallIcon(R.drawable.cart)
+                .setSmallIcon(R.drawable.lo)
                 .setContentTitle("Food ordering")
-                .setContentText("You have been connected to a network")
+                .setContentText("Grab your favouritefood")
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
 

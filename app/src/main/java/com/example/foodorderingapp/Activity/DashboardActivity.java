@@ -5,15 +5,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 
+import android.app.Notification;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.foodorderingapp.Broadcast.BroadcastReceiver;
 import com.example.foodorderingapp.Fragment.HomeFragment;
 import com.example.foodorderingapp.Interface.FoodApi;
 import com.example.foodorderingapp.Interface.UserApi;
@@ -33,6 +39,7 @@ import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.HotDeals;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.Model.User;
+import com.example.foodorderingapp.Notification.Channel;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 import com.example.foodorderingapp.strictmode.StrictModeClass;
@@ -63,6 +70,7 @@ import static java.security.AccessController.getContext;
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private NavigationView nv;
+    private NotificationManagerCompat notificationManagerCompat;
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
@@ -93,10 +101,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
          Toolbar toolbar = findViewById(R.id.app_bar);
-         getSupportActionBar().hide();
+         //getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        Channel channel= new Channel(this);
+        channel.createChannel();
         cartimg = findViewById(R.id.cartlist);
            loaduser();
 
@@ -244,7 +255,34 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+
     }
+
+
+    private void notification1() {
+        Notification notification = new NotificationCompat.Builder(this, Channel.channel_1)
+                .setSmallIcon(R.drawable.lo)
+                .setContentTitle("Food ordering")
+                .setContentText("10% dsicount")
+                .setCategory(NotificationCompat.CATEGORY_SYSTEM)
+                .build();
+
+        notificationManagerCompat.notify(1, notification);
+    }
+       BroadcastReceiver broadCastReceiver= new BroadcastReceiver(this);
+
+        protected void onStart(){
+            super.onStart();
+            IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+            registerReceiver(broadCastReceiver,intentFilter);
+        }
+
+        @Override
+        protected void onStop() {
+            super.onStop();
+            unregisterReceiver(broadCastReceiver);
+        }
 
 
 

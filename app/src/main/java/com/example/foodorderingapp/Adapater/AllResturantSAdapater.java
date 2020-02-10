@@ -44,7 +44,7 @@ public class AllResturantSAdapater extends RecyclerView.Adapter<AllResturantSAda
 
         Restuarant res = lstres.get(position);
 
-        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getRes_image();
+        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position);
         String re8sname = lstres.get(position).getResturantname();
         StrictModeClass.StrictMode();
 

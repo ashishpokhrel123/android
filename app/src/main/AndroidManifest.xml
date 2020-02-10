@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.Sensor.accelerometer"/>
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Notification.BroadcastActivity"></activity>
+        <activity android:name=".Sensor.AccelerometerSensorActivity"></activity>
+        <activity android:name=".Notification.BroadcastActivity" />
         <activity android:name=".Notification.NotificationActivity" />
         <activity android:name=".Activity.OrderActivity" />
         <activity android:name=".Activity.FooddetailsActivity" />
@@ -25,11 +27,11 @@
         <activity android:name=".Activity.FoodActivity" />
         <activity android:name=".Activity.EditProfile" />
         <activity android:name=".Activity.RestuarantActivity" />
-        <activity android:name=".Activity.DashboardActivity" />
+        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.DashboardActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
