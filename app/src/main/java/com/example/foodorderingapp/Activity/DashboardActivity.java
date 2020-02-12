@@ -18,6 +18,10 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -71,6 +75,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawer;
     private NavigationView nv;
     private NotificationManagerCompat notificationManagerCompat;
+    public SensorManager sensorManager;
     private Toolbar toolbar;
     ActionBarDrawerToggle dt;
 
@@ -101,7 +106,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
          Toolbar toolbar = findViewById(R.id.app_bar);
-         //getSupportActionBar().hide();
+         getSupportActionBar().hide();
         drawer = findViewById(R.id.drawer);
         NavigationView nv = findViewById(R.id.bottom_navigation);
         nv.setNavigationItemSelectedListener(this);
@@ -109,7 +114,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         Channel channel= new Channel(this);
         channel.createChannel();
         cartimg = findViewById(R.id.cartlist);
+        //loading user from the API
            loaduser();
+
+           // Light sensor
+
 
 
 
@@ -135,7 +144,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
         };
-        drawer.addDrawerListener(dt);
+
+
+
 
         dt.syncState();
         lstexfood = new ArrayList<>();
@@ -191,8 +202,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 globaluser = response.body();
                 String imgPath = Url.imagePath +  response.body().getProfileimage();
                 String username =  response.body().getName();
-                Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
-                Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
+                //Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
+                TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
                 ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
                 navigationtxtuser.setText(username);
 
@@ -205,6 +217,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
     }
+
+
+
+
 
 
     private void profileupdate() {

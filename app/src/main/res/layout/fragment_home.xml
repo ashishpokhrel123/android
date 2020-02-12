@@ -149,7 +149,7 @@
           android:layout_marginTop="20dp"/>
 
       <Button
-           android:id="@+id/viewrestuarnt"
+           android:id="@+id/btnallrestuarnt"
           android:layout_width="80dp"
           android:layout_height="30dp"
           android:layout_marginTop="20dp"

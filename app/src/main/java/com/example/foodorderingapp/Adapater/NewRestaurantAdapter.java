@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
@@ -21,29 +20,28 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.RestuarantViewHolder> {
+public class NewRestaurantAdapter extends RecyclerView.Adapter<NewRestaurantAdapter.NewRestuarantViewHolder> {
+
 
     Context mcontext;
     List<Restuarant> lstres;
 
-    Food food;
-
-    public RestuarantAdapater(Context mcontext,List<Restuarant> lstres){
-        this.mcontext=mcontext;
-        this.lstres=lstres;
+    public NewRestaurantAdapter(Context mcontext, List<Restuarant> lstres) {
+        this.mcontext = mcontext;
+        this.lstres = lstres;
     }
 
 
     @NonNull
     @Override
-    public RestuarantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NewRestuarantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mcontext).inflate(R.layout.resturant,parent,false);
-        return new RestuarantViewHolder(v);
+        return new NewRestuarantViewHolder(v);
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestuarantViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull NewRestuarantViewHolder holder, int position) {
         Restuarant res = lstres.get(position);
 
 
@@ -61,7 +59,6 @@ public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.
         holder.txtres.setText(re8sname);
 
 
-
     }
 
     @Override
@@ -69,12 +66,13 @@ public class RestuarantAdapater extends RecyclerView.Adapter<RestuarantAdapater.
         return lstres.size();
     }
 
-    public class RestuarantViewHolder extends RecyclerView.ViewHolder{
+    public class NewRestuarantViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imgres;
         TextView txtres;
 
-        public RestuarantViewHolder(@NonNull View itemView) {
+
+        public NewRestuarantViewHolder(@NonNull View itemView) {
             super(itemView);
             imgres =itemView.findViewById(R.id.rest_img);
             txtres = itemView.findViewById(R.id.res_text);

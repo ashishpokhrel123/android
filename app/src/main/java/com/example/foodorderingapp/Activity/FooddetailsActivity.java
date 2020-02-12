@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.foodorderingapp.Adapater.RestaurantFoodAdapter;
 import com.example.foodorderingapp.Model.Food;
+import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FooddetailsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    public static List<Food> lstfood;
+    public static List<Restuarant> lstfood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

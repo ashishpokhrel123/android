@@ -1,9 +1,10 @@
 package com.example.foodorderingapp.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,13 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.foodorderingapp.Activity.CartActivity;
-import com.example.foodorderingapp.Activity.FoodActivity;
-import com.example.foodorderingapp.Activity.RestuarantActivity;
+import com.example.foodorderingapp.Activity.ViewResturantActitvity;
 import com.example.foodorderingapp.Adapater.ExplorefoodAdapater;
 import com.example.foodorderingapp.Adapater.HotDealsAdapater;
+import com.example.foodorderingapp.Adapater.NewRestaurantAdapter;
 import com.example.foodorderingapp.Adapater.PopularAdapater;
-import com.example.foodorderingapp.Adapater.RestuarantAdapater;
 import com.example.foodorderingapp.Interface.FoodApi;
 import com.example.foodorderingapp.Interface.RestuarantApi;
 import com.example.foodorderingapp.Model.Food;
@@ -38,6 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.SENSOR_SERVICE;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstdeals;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstexfood;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstpop;
@@ -51,7 +51,11 @@ public class HomeFragment extends Fragment {
 
     private ImageView cartimage;
 
-    private Button btnviewresturant;
+    SensorManager sensorManager;
+
+     private Button resbutton;
+
+   // private Button btnviewresturant;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,8 +63,19 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-         //txtviewresturant = v.findViewById(R.id.viewrestuarnt);
-         btnviewresturant = v.findViewById(R.id.viewrestuarnt);
+
+       resbutton =  v.findViewById(R.id.btnallrestuarnt);
+
+       //Calling Sensor Light
+
+
+        resbutton.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(getContext(), ViewResturantActitvity.class);
+                  startActivity(intent);
+              }
+          });
 
         recyclerView = v.findViewById(R.id.popular_recyclerview);
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);
@@ -84,13 +99,7 @@ public class HomeFragment extends Fragment {
         rv_popular.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
 
 
-       btnviewresturant.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent i = new Intent(getContext(), RestuarantActivity.class);
-               startActivity(i);
-           }
-       });
+
 
 
 
@@ -100,6 +109,11 @@ public class HomeFragment extends Fragment {
 
 
     }
+
+
+
+
+
 
     private void getCategory(){
 
@@ -132,7 +146,7 @@ public class HomeFragment extends Fragment {
     private void getRestuarant()
     {
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.getres(Url.token);
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getres();
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
@@ -144,7 +158,8 @@ public class HomeFragment extends Fragment {
                 }
                 lstres = response.body();
 
-                RestuarantAdapater restuarantAdapater = new RestuarantAdapater(getContext(),lstres);
+
+                NewRestaurantAdapter restuarantAdapater = new NewRestaurantAdapter(getContext(),lstres);
                 recyclerView_res.setAdapter(restuarantAdapater);
                 recyclerView_res.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
             }
