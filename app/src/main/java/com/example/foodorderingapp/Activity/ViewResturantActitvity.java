@@ -44,8 +44,8 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
 
 
-         getRest();
-         lightsensor();
+        getRest();
+        lightsensor();
 
 
     }
@@ -84,7 +84,7 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
 
                 AllResturantAdapter restuarantAdapater = new AllResturantAdapter(ViewResturantActitvity.this, listres);
-               recyclerView.setAdapter(restuarantAdapater);
+                recyclerView.setAdapter(restuarantAdapater);
                 recyclerView.setLayoutManager(new LinearLayoutManager(ViewResturantActitvity.this));
             }
 

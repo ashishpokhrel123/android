@@ -19,7 +19,7 @@ public class FooddetailsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    public static List<Restuarant> lstfood;
+   List<Restuarant> lstfood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

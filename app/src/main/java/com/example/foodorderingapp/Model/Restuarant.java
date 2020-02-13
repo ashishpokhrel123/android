@@ -27,40 +27,22 @@ public class Restuarant {
     }
 
     private String res_image;
-    private Food food;
-    private Food foodname;
-    private Food price;
 
-
-    public Food getFood() {
-        return food;
+    public Food getFooditem() {
+        return fooditem;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    public void setFooditem(Food fooditem) {
+        this.fooditem = fooditem;
     }
 
-    public Food getFoodname() {
-        return foodname;
-    }
+    Food  fooditem;
 
-    public void setFoodname(Food foodname) {
-        this.foodname = foodname;
-    }
 
-    public Food getPrice() {
-        return price;
-    }
 
-    public void setPrice(Food price) {
-        this.price = price;
-    }
 
-    public Restuarant(Food foodimage, Food foodname, Food price) {
-        this.food = food;
-        this.foodname = foodname;
-        this.price = price;
-    }
+
+
 
 
 

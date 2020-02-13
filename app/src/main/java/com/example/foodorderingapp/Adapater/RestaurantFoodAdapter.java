@@ -13,25 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorderingapp.Activity.OrderActivity;
-import com.example.foodorderingapp.Model.Food;
+import com.example.foodorderingapp.Model.Fooditem;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 import com.example.foodorderingapp.strictmode.StrictModeClass;
 
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URL;
 import java.util.List;
 
 public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodAdapter.RestaurantFoodViewHolder> {
 
     Context mcontext;
-    List<Restuarant> lstresfood;
+    List<Restuarant> fooditemList;
 
-    public RestaurantFoodAdapter(Context  mcontext, List<Restuarant> lstresfood){
+    public RestaurantFoodAdapter(Context  mcontext, List<Restuarant> fooditems){
         this.mcontext= mcontext;
-        this.lstresfood = lstresfood;
+        this.fooditemList = fooditems;
     }
 
 
@@ -48,24 +47,23 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
     @Override
     public void onBindViewHolder(@NonNull RestaurantFoodViewHolder holder, int position) {
 
-          final Restuarant resfood = lstresfood.get(position);
+        Restuarant res = fooditemList.get(position);
+
+        String name = fooditemList.get(0).getFooditem().getFoodname();
 
 
-         // Food food = resfood.getFoodname();
-
-
-       // String imagepath = Url.BASE_URL + "uploads/" + food.getFoodimage();
+       String imagepath = Url.BASE_URL + "uploads/" + fooditemList.get(position);
         StrictModeClass.StrictMode();
         try {
-           // URL url = new URL(imagepath);
-           //holder.restfoodimg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+          URL url = new URL(imagepath);
+           holder.restfoodimg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
 
         } catch (Exception e) {
 
             e.printStackTrace();
         }
 
-        //holder.txtrestfoodprice.setText();
+        holder.txtrestfoodname.setText(name);
 
 
         holder.txtrestfoodname.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +79,7 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
 
     @Override
     public int getItemCount() {
-        return lstresfood.size();
+        return fooditemList.size();
     }
 
     public class RestaurantFoodViewHolder extends RecyclerView.ViewHolder {
