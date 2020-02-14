@@ -72,7 +72,7 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
     private void getRest(){
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.getrest(Url.token);
+        Call<List<Restuarant>> restuarantCall = restuarantApi.foodres();
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
@@ -94,6 +94,8 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Restuarant>> call, Throwable t) {
+
+                Toast.makeText(ViewResturantActitvity.this, "Error" , Toast.LENGTH_SHORT).show();
 
             }
         });

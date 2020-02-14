@@ -1,5 +1,8 @@
 package com.example.foodorderingapp;
 
+import com.example.foodorderingapp.BLL.LoginBLL;
+import com.example.foodorderingapp.BLL.SignupBLL;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,7 +14,17 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+
+    public void testlogin(){
+        LoginBLL loginBLL = new LoginBLL();
+        boolean result = loginBLL.login("ashish","ashish");
+         assertEquals(true,result);
     }
+    @Test
+    public  void testsignup(){
+        SignupBLL  signupBLL = new SignupBLL();
+        boolean result = signupBLL.login("Subash","subash","subashthapa901@gmail.com","98677890088","Subash Thapa","subash.jpeg");
+        assertEquals(true,result);
+    }
+
 }
