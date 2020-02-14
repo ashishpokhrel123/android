@@ -165,6 +165,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         lstpop.add(new ExploreFood(R.drawable.noodles,"Noodles"));
         lstpop.add(new ExploreFood(R.drawable.cofee,"Cofee"));
 
+        lstres = new ArrayList<>();
+
+
+
 
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.container,

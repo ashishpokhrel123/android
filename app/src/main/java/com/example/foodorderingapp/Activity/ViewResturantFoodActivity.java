@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.foodorderingapp.Adapater.AllResturantAdapter;
 import com.example.foodorderingapp.Adapater.RestaurantFoodAdapter;
 import com.example.foodorderingapp.Interface.RestuarantApi;
-import com.example.foodorderingapp.Model.Fooditem;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,7 +32,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
 
         rv = findViewById(R.id.recycler_resturantfood);
 
-        lstresfood = new ArrayList<>();
+
 
 
 
@@ -51,7 +48,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         Toast.makeText(this, "id:" + resid, Toast.LENGTH_SHORT).show();
 
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-       Call<List<Restuarant>> resfoodcall = restuarantApi.foodres(resid);
+       Call<List<Restuarant>> resfoodcall = restuarantApi.foodres();
 
        resfoodcall.enqueue(new Callback<List<Restuarant>>() {
            @Override

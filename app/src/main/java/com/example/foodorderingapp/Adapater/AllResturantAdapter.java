@@ -47,11 +47,10 @@ public class AllResturantAdapter extends RecyclerView.Adapter<AllResturantAdapte
 
           final Restuarant res = lstres.get(position);
 
-       String imagepath = Url.BASE_URL +"uploads" +lstres.get(0).getRes_image();
-       //String rename = lstres.get(position).getRes_image();
+       String imagepath = Url.BASE_URL +"uploads" +lstres.get(position).getRes_image();
+       String rename = lstres.get(position).getResturant_name();
          StrictModeClass.StrictMode();
 
-         String id = res.getId();
 
            try {
               URL url=new URL(imagepath);
@@ -62,14 +61,14 @@ public class AllResturantAdapter extends RecyclerView.Adapter<AllResturantAdapte
 
         }
 
-        holder.txtname.setText(res.getResturantname());
+        holder.txtname.setText(rename);
            holder.txtname.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
 
 
                    Intent i = new Intent(mcontext, ViewResturantFoodActivity.class);
-                   i.putExtra("id",res.getId());
+                   i.putExtra("id",res.get_id());
                    mcontext.startActivity(i);
                }
            });

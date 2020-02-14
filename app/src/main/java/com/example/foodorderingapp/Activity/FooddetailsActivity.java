@@ -33,7 +33,7 @@ public class FooddetailsActivity extends AppCompatActivity {
 
 
 
-        RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(this,lstfood);
+        RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(FooddetailsActivity.this,lstfood);
         recyclerView.setAdapter(resfoodadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

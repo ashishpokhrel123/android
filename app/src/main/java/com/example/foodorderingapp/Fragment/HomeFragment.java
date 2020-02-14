@@ -31,6 +31,7 @@ import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,7 +44,7 @@ import static com.example.foodorderingapp.Activity.DashboardActivity.lstexfood;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstpop;
 import static com.example.foodorderingapp.Activity.DashboardActivity.lstres;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SensorEventListener {
 
     private RecyclerView recyclerView,rv,recyclerView_res,rv_popular;
 
@@ -52,6 +53,8 @@ public class HomeFragment extends Fragment {
     private ImageView cartimage;
 
     SensorManager sensorManager;
+
+    Sensor sensor;
 
      private Button resbutton;
 
@@ -69,6 +72,8 @@ public class HomeFragment extends Fragment {
        //Calling Sensor Light
 
 
+
+
         resbutton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
@@ -79,12 +84,12 @@ public class HomeFragment extends Fragment {
 
         recyclerView = v.findViewById(R.id.popular_recyclerview);
         rv = v.findViewById(R.id.popular_recyclerview_hotdeals);
-        recyclerView_res = v.findViewById(R.id.recycler_restuarnt);
+        recyclerView_res = v.findViewById(R.id.recycler_restuarant);
         rv_popular = v.findViewById(R.id.recycler_populattoday);
         cartimage = v.findViewById(R.id.cartlist);
 
         getCategory();
-        getRestuarant();
+
 
         ExplorefoodAdapater adapater = new ExplorefoodAdapater(getContext(),lstexfood);
         recyclerView.setAdapter(adapater);
@@ -97,6 +102,12 @@ public class HomeFragment extends Fragment {
         PopularAdapater popularAdapater = new PopularAdapater(getContext(),lstpop);
         rv_popular.setAdapter(popularAdapater);
         rv_popular.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
+
+
+
+
+        getRestuarant();
 
 
 
@@ -146,7 +157,7 @@ public class HomeFragment extends Fragment {
     private void getRestuarant()
     {
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.getres();
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getrest(Url.token);
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
@@ -156,12 +167,18 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getContext(),"Error"+response.code(),Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 lstres = response.body();
 
 
-                NewRestaurantAdapter restuarantAdapater = new NewRestaurantAdapter(getContext(),lstres);
-                recyclerView_res.setAdapter(restuarantAdapater);
+
+                NewRestaurantAdapter restaurantAdapter = new NewRestaurantAdapter(getContext(),lstres);
+                recyclerView_res.setAdapter(restaurantAdapter);
                 recyclerView_res.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+
+
+
+
             }
 
             @Override
@@ -173,5 +190,13 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onSensorChanged(SensorEvent event) {
 
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 }

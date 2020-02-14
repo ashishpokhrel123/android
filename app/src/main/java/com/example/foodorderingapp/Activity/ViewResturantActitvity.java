@@ -29,7 +29,7 @@ public class ViewResturantActitvity extends AppCompatActivity {
     RecyclerView recyclerView;
     public SensorManager sensorManager;
 
-    public static List<Restuarant> listres;
+   List<Restuarant> listres ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,9 @@ public class ViewResturantActitvity extends AppCompatActivity {
         SensorEventListener sensorEventListener= new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                Toast.makeText(getApplicationContext(),"On SensorChanged"+ event.values[0],Toast.LENGTH_SHORT).show();
+                if( event.sensor.getType() == Sensor.TYPE_LIGHT) {
+                    Toast.makeText(getApplicationContext(), "On SensorChanged" + event.values[0], Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -70,17 +72,19 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
     private void getRest(){
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.getres();
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getrest(Url.token);
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
             @Override
             public void onResponse(Call<List<Restuarant>> call, Response<List<Restuarant>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(ViewResturantActitvity.this,"Error"+response.code(),Toast.LENGTH_SHORT).show();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(ViewResturantActitvity.this, "Error" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 listres = response.body();
+
+
 
 
                 AllResturantAdapter restuarantAdapater = new AllResturantAdapter(ViewResturantActitvity.this, listres);

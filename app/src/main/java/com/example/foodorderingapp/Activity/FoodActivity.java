@@ -32,9 +32,7 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-        FoodAdapater foodAdapater = new FoodAdapater(FoodActivity.this,foodlist);
-        rv_food.setAdapter(foodAdapater);
-        rv_food.setLayoutManager(new LinearLayoutManager(this));
+
 
 
 

@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
-    android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".MainActivity"
-    tools:deviceIds="wear">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-   <TextView
-       android:id="@+id/wear_notification"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Message"
-       android:layout_marginTop="20dp"
-       android:textSize="20sp"/>
-
-
+<TextView
+    android:id="@+id/txtlogin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Login"
+    android:textSize="20dp"
+    android:gravity="center"
+    android:layout_marginTop="5dp"/>
+<EditText
+android:id="@+id/etusername"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="username or email"
+android:layout_below="@id/txtlogin"
+android:layout_marginTop="5dp"/>
+<EditText
+android:id="@+id/etpassword"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Password"
+android:layout_below="@id/etusername"
+android:layout_marginTop="5dp"/>
+<Button
+android:id="@+id/btnlogin"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Login"
+android:layout_below="@id/etpassword"/>
 </RelativeLayout>
+
+

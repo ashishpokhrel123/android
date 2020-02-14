@@ -23,6 +23,7 @@ import java.util.List;
 public class NewRestaurantAdapter extends RecyclerView.Adapter<NewRestaurantAdapter.NewRestuarantViewHolder> {
 
 
+
     Context mcontext;
     List<Restuarant> lstres;
 
@@ -42,22 +43,11 @@ public class NewRestaurantAdapter extends RecyclerView.Adapter<NewRestaurantAdap
 
     @Override
     public void onBindViewHolder(@NonNull NewRestuarantViewHolder holder, int position) {
+
+
         Restuarant res = lstres.get(position);
-
-
-        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position);
-        String re8sname = lstres.get(position).getResturantname();
-        StrictModeClass.StrictMode();
-
-
-        try {
-            URL url=new URL(imagepath);
-            holder.imgres.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
-        } catch (Exception e) {
-
-        }
-        holder.txtres.setText(re8sname);
-
+       // holder.imgres.setImageResource(res.getRes_image());
+        holder.txtres.setText(res.getResturant_name());
 
     }
 
@@ -74,9 +64,10 @@ public class NewRestaurantAdapter extends RecyclerView.Adapter<NewRestaurantAdap
 
         public NewRestuarantViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgres =itemView.findViewById(R.id.rest_img);
-            txtres = itemView.findViewById(R.id.res_text);
+            imgres =itemView.findViewById(R.id.restimg);
+            txtres = itemView.findViewById(R.id.res_name);
         }
     }
+
 
 }
