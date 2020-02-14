@@ -13,6 +13,7 @@ import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,7 +34,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         rv = findViewById(R.id.recycler_resturantfood);
 
 
-
+ lstresfood = new ArrayList<>();
 
 
         getResfood();
