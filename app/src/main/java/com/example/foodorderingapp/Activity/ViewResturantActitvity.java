@@ -29,7 +29,7 @@ public class ViewResturantActitvity extends AppCompatActivity {
     RecyclerView recyclerView;
     public SensorManager sensorManager;
 
-   List<Restuarant> listres ;
+    public static List<Restuarant> listres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,30 +72,27 @@ public class ViewResturantActitvity extends AppCompatActivity {
 
     private void getRest(){
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-        Call<List<Restuarant>> restuarantCall = restuarantApi.foodres();
+        Call<List<Restuarant>> restuarantCall = restuarantApi.getrest(Url.token);
 
 
         restuarantCall.enqueue(new Callback<List<Restuarant>>() {
             @Override
             public void onResponse(Call<List<Restuarant>> call, Response<List<Restuarant>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(ViewResturantActitvity.this, "Error" + response.code(), Toast.LENGTH_SHORT).show();
+                if(!response.isSuccessful()){
+                    Toast.makeText(ViewResturantActitvity.this,"Error"+response.code(),Toast.LENGTH_SHORT).show();
                     return;
                 }
                 listres = response.body();
-
-
 
 
                 AllResturantAdapter restuarantAdapater = new AllResturantAdapter(ViewResturantActitvity.this, listres);
                 recyclerView.setAdapter(restuarantAdapater);
                 recyclerView.setLayoutManager(new LinearLayoutManager(ViewResturantActitvity.this));
             }
-
             @Override
             public void onFailure(Call<List<Restuarant>> call, Throwable t) {
 
-                Toast.makeText(ViewResturantActitvity.this, "Error" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewResturantActitvity.this, "Error" + t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });

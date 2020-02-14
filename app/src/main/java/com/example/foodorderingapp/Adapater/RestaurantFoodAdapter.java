@@ -25,11 +25,11 @@ import java.util.List;
 public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodAdapter.RestaurantFoodViewHolder> {
 
     Context mcontext;
-    List<Restuarant> fooditemList;
+    List<Restuarant> lstres;
 
-    public RestaurantFoodAdapter(Context  mcontext, List<Restuarant> fooditems){
+    public RestaurantFoodAdapter(Context  mcontext, List<Restuarant> lstres){
         this.mcontext= mcontext;
-        this.fooditemList = fooditems;
+        this.lstres = lstres;
     }
 
 
@@ -46,12 +46,12 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
     @Override
     public void onBindViewHolder(@NonNull RestaurantFoodViewHolder holder, int position) {
 
-        Restuarant res = fooditemList.get(position);
+        Restuarant res = lstres.get(position);
 
-        String name = fooditemList.get(0).getFooditem().getFoodname();
+        String name = lstres.get(0).getFooditem().getFoodname();
 
 
-       String imagepath = Url.BASE_URL + "uploads/" + fooditemList.get(position);
+       String imagepath = Url.BASE_URL + "uploads/" + lstres.get(position);
         StrictModeClass.StrictMode();
         try {
           URL url = new URL(imagepath);
@@ -78,7 +78,7 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
 
     @Override
     public int getItemCount() {
-        return fooditemList.size();
+        return lstres.size();
     }
 
     public class RestaurantFoodViewHolder extends RecyclerView.ViewHolder {

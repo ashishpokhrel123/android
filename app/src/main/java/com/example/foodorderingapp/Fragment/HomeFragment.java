@@ -183,6 +183,7 @@ public class HomeFragment extends Fragment implements SensorEventListener {
 
             @Override
             public void onFailure(Call<List<Restuarant>> call, Throwable t) {
+                Toast.makeText(getContext(),"Error" + t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });

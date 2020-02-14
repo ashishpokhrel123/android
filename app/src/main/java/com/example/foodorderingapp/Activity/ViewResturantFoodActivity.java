@@ -48,7 +48,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         Toast.makeText(this, "id:" + resid, Toast.LENGTH_SHORT).show();
 
         RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-       Call<List<Restuarant>> resfoodcall = restuarantApi.foodres();
+       Call<List<Restuarant>> resfoodcall = restuarantApi.getrest(Url.token);
 
        resfoodcall.enqueue(new Callback<List<Restuarant>>() {
            @Override

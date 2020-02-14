@@ -51,7 +51,7 @@ public class Restuarant {
     private String resturant_name;
     private String resturant_address;
     private String res_image;
-    private  Food fooditem;
+     Food fooditem;
 
 
     public Restuarant(String _id, String resturant_name, String resturant_address, String res_image, Food fooditem) {
