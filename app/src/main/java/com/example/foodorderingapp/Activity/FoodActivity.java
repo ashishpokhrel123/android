@@ -16,29 +16,23 @@ import java.util.List;
 
 public class FoodActivity extends AppCompatActivity {
 
-    RecyclerView rv_food,recyclerView;
+  RecyclerView rv_food;
 
-    public static List<Food> foodlist;
+    public static List<Food> foodlist = new ArrayList<>();
     public static  List<Food> lstfood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food);
-        rv_food = findViewById(R.id.recyclerview_food);
+        setContentView(R.layout.activity_main);
+        rv_food = findViewById(R.id.recycler_food);
 
 
 
 
-        foodlist =new ArrayList<>();
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aAs"));
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aUs"));
-        foodlist.add(new Food("Burger","Rs,120","ChickenHouse","aJs"));
 
 
-        FoodAdapater foodAdapater = new FoodAdapater(this,foodlist);
-        rv_food.setAdapter(foodAdapater);
-        rv_food.setLayoutManager(new LinearLayoutManager(this));
+
 
 
 

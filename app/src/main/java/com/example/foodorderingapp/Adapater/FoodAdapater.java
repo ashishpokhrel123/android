@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorderingapp.Activity.FooddetailsActivity;
 import com.example.foodorderingapp.Model.Food;
+import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class FoodAdapater extends RecyclerView.Adapter<FoodAdapater.FoodViewhold
     List<Food> lstfood;
 
 
-    public FoodAdapater(Context mcontext,List<Food> lstfood)
+    public FoodAdapater(Context mcontext, List<Food> lstfood)
     {
         this.mcontext=mcontext;
         this.lstfood=lstfood;
@@ -41,7 +42,7 @@ public class FoodAdapater extends RecyclerView.Adapter<FoodAdapater.FoodViewhold
     @Override
     public void onBindViewHolder(@NonNull FoodViewholder holder, int position) {
         Food food = lstfood.get(position);
-        holder.txtrest_name.setText(food.getResturant());
+        holder.txtrest_name.setText("KFC");
 
 
 

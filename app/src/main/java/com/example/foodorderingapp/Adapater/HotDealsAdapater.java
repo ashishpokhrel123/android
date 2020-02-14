@@ -1,6 +1,8 @@
 package com.example.foodorderingapp.Adapater;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +11,22 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.HotDeals;
 import com.example.foodorderingapp.R;
+import com.example.foodorderingapp.URL.Url;
+import com.example.foodorderingapp.strictmode.StrictModeClass;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class HotDealsAdapater extends  RecyclerView.Adapter<HotDealsAdapater.PopularCategoryViewHolder> {
 
     Context mContext;
-    List<HotDeals> lstpopcategory;
+    List<Food> lstpopcategory;
 
-    public HotDealsAdapater(Context mContext, List<HotDeals>lstpopcategory)
+    public HotDealsAdapater(Context mContext, List<Food>lstpopcategory)
     {
         this.mContext = mContext;
         this.lstpopcategory = lstpopcategory;
@@ -36,8 +43,16 @@ public class HotDealsAdapater extends  RecyclerView.Adapter<HotDealsAdapater.Pop
 
     @Override
     public void onBindViewHolder(@NonNull PopularCategoryViewHolder holder, int position) {
-        HotDeals pc = lstpopcategory.get(position);
-        holder.image.setImageResource(pc.getCateimg());
+        Food food = lstpopcategory.get(position);
+
+        String imagepath = Url.BASE_URL+ "uploads/" + lstpopcategory.get(position).getFoodimage();
+        StrictModeClass.StrictMode();
+        try {
+            URL url=new URL(imagepath);
+            holder.image.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (Exception e) {
+        }
+
 
     }
 

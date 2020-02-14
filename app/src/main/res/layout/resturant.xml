@@ -9,10 +9,10 @@
         android:layout_height="150dp">
 
         <ImageView
-            android:id="@+id/rest_img"
+            android:id="@+id/restimg"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/burger"
+            android:src="@drawable/chickenfried"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="0dp"/>
 
@@ -25,7 +25,7 @@
 
 
             <TextView
-                android:id="@+id/res_text"
+                android:id="@+id/res_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

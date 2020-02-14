@@ -3,10 +3,13 @@
     package="com.example.foodorderingapp">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.Sensor.accelerometer" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".Activity.OrderActivity" />
         <activity android:name=".Activity.FooddetailsActivity" />
         <activity android:name=".Activity.CartActivity" />
@@ -24,6 +28,19 @@
         <activity android:name=".Activity.EditProfile" />
         <activity android:name=".Activity.RestuarantActivity" />
         <activity android:name=".Activity.DashboardActivity" />
+=======
+        <activity android:name=".Activity.ViewResturantFoodActivity" android:parentActivityName=".Activity.DashboardActivity"></activity>
+        <activity android:name=".Activity.ViewResturantActitvity" android:parentActivityName=".Activity.DashboardActivity"/>
+        <activity android:name=".Sensor.AccelerometerSensorActivity" />
+        <activity android:name=".Notification.BroadcastActivity" />
+        <activity android:name=".Notification.NotificationActivity" />
+        <activity android:name=".Activity.OrderActivity" android:parentActivityName=".Activity.DashboardActivity" />
+        <activity android:name=".Activity.FooddetailsActivity" android:parentActivityName=".Activity.DashboardActivity" />
+        <activity android:name=".Activity.CartActivity" android:parentActivityName=".Activity.DashboardActivity"/>
+        <activity android:name=".Activity.FoodActivity" android:parentActivityName=".Activity.DashboardActivity" />
+        <activity android:name=".Activity.EditProfile" android:parentActivityName=".Activity.DashboardActivity" />
+        <activity android:name=".Activity.DashboardActivity"  />
+>>>>>>> resturant
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity

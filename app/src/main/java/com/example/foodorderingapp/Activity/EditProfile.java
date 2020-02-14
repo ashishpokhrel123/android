@@ -45,10 +45,15 @@ public class EditProfile extends AppCompatActivity {
     private String imageName = "";
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile);
+
+        //getSupportActionBar().hide();
+        getSupportActionBar().setTitle("update profile");
 
 
         upname = findViewById(R.id.upd_name);

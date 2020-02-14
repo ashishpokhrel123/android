@@ -1,18 +1,15 @@
 package com.example.foodorderingapp.Model;
 
 public class Food {
-    private String foodname;
-    //private String foodimage;
-    private String price;
-    private String resturant;
-    private String order;
 
-    public Food(String foodname, String price, String resturant, String order) {
+    private String foodname;
+    private String foodimage;
+    private String price;
+
+    public Food(String foodname, String foodimage, String price) {
         this.foodname = foodname;
-        //this.foodimage = foodimage;
+        this.foodimage = foodimage;
         this.price = price;
-        this.resturant = resturant;
-        this.order = order;
     }
 
     public String getFoodname() {
@@ -23,6 +20,13 @@ public class Food {
         this.foodname = foodname;
     }
 
+    public String getFoodimage() {
+        return foodimage;
+    }
+
+    public void setFoodimage(String foodimage) {
+        this.foodimage = foodimage;
+    }
 
     public String getPrice() {
         return price;
@@ -31,20 +35,5 @@ public class Food {
     public void setPrice(String price) {
         this.price = price;
     }
-
-    public String getResturant() {
-        return resturant;
-    }
-
-    public void setResturant(String resturant) {
-        this.resturant = resturant;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
-    }
 }
+

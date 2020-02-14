@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.example.foodorderingapp.Adapater.RestaurantFoodAdapter;
 import com.example.foodorderingapp.Model.Food;
+import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FooddetailsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    public static List<Food> lstfood;
+   List<Restuarant> lstfood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,10 @@ public class FooddetailsActivity extends AppCompatActivity {
 
         lstfood = new ArrayList<>();
 
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
-        lstfood.add(new Food("Burger","120","KFC","ASHISH"));
 
 
-        RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(this,lstfood);
+
+        RestaurantFoodAdapter resfoodadapter = new RestaurantFoodAdapter(FooddetailsActivity.this,lstfood);
         recyclerView.setAdapter(resfoodadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
