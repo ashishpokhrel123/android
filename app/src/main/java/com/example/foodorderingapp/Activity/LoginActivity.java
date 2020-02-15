@@ -36,8 +36,8 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
 
-    protected EditText etusername,etpassword;
-    private Button btnlogin;
+   public EditText etusername,etpassword;
+    public  Button btnlogin;
     private TextView txtreg;
     private CheckBox chk;
     private SensorManager sensorManager;
@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //getSupportActionBar().hide();
 
-        etusername = findViewById(R.id.username);
-        etpassword = findViewById(R.id.password);
+        etusername = findViewById(R.id.logusername);
+        etpassword = findViewById(R.id.logpassword);
         btnlogin = findViewById(R.id.login);
         chk = findViewById(R.id.chkrememberme);
 
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                     Vibrator vibrator=(Vibrator) getSystemService(VIBRATOR_SERVICE);
                     vibrator.vibrate(2000);
                 }else{
-                    Toast.makeText(LoginActivity.this,"\"Login success!\"",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Login success!",Toast.LENGTH_SHORT).show();
                     sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username",etusername.getText().toString());

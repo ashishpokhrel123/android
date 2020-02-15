@@ -1,5 +1,6 @@
 package com.example.foodorderingapp.Activity;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.foodorderingapp.R;
@@ -8,6 +9,7 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -20,7 +22,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
-
+@RunWith(AndroidJUnit4.class)
 public class LoginActivityTest {
     @Rule
     public ActivityTestRule<LoginActivity> testRule = new ActivityTestRule<>(LoginActivity.class);
@@ -33,16 +35,16 @@ public class LoginActivityTest {
 
     @Test
     public void ComponentsTest(){
-        assertNotNull(loginActivity.etpassword);
         assertNotNull(loginActivity.etusername);
+        assertNotNull(loginActivity.etpassword);
     }
 
     @Test
     public void LoginUItest(){
 
-        onView(withId(R.id.username))
+        onView(withId(R.id.logusername))
                 .perform(typeText("ashish"));
-        onView(withId(R.id.password))
+        onView(withId(R.id.logpassword))
                 .perform(typeText("ashish"));
 
         closeSoftKeyboard();
@@ -50,7 +52,7 @@ public class LoginActivityTest {
         onView(withId(R.id.login))
                 .perform(click());
 
-        onView(withText("Username or password doesnot match")).
+        onView(withText("Login success!")).
                 inRoot(withDecorView(Matchers.not(is(loginActivity.getWindow().getDecorView())))).
                 check(matches(isDisplayed()));
     }
