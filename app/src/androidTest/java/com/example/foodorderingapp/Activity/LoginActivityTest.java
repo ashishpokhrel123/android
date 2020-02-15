@@ -40,20 +40,16 @@ public class LoginActivityTest {
     }
 
     @Test
-    public void LoginUItest(){
-
+    public void TestLogin(){
         onView(withId(R.id.logusername))
-                .perform(typeText("ashish"));
-        onView(withId(R.id.logpassword))
-                .perform(typeText("ashish"));
+                .perform(typeText("ashish"))
+                .perform(closeSoftKeyboard());
 
-        closeSoftKeyboard();
+        onView(withId(R.id.logpassword))
+                .perform(typeText("ashish"))
+                .perform(closeSoftKeyboard());
 
         onView(withId(R.id.login))
                 .perform(click());
-
-        onView(withText("Login success!")).
-                inRoot(withDecorView(Matchers.not(is(loginActivity.getWindow().getDecorView())))).
-                check(matches(isDisplayed()));
     }
 }

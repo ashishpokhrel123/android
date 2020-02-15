@@ -1,7 +1,9 @@
 package com.example.foodorderingapp;
 
+import com.example.foodorderingapp.BLL.FoodBLL;
 import com.example.foodorderingapp.BLL.LoginBLL;
 import com.example.foodorderingapp.BLL.SignupBLL;
+import com.example.foodorderingapp.BLL.UPdateBLL;
 
 import org.junit.Test;
 
@@ -25,6 +27,20 @@ public class ExampleUnitTest {
         SignupBLL  signupBLL = new SignupBLL();
         boolean result = signupBLL.login("Subash","subash","subashthapa901@gmail.com","98677890088","Subash Thapa","subash.jpeg");
         assertEquals(true,result);
+    }
+    @Test
+    public void testorder(){
+        FoodBLL foodBLL = new FoodBLL();
+        boolean result = foodBLL.food("09354647889","Burger","12","12000");
+        assertEquals(true,result);
+
+    }
+    @Test
+    public void testupdate(){
+       UPdateBLL uPdateBLL = new UPdateBLL();
+        boolean result = uPdateBLL.update("uttam","Burger","uttt@gmail.com","98671872000","Uttam","ram.jpeg");
+        assertEquals(true,result);
+
     }
 
 }
