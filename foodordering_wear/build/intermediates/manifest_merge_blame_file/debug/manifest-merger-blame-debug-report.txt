@@ -13,76 +13,91 @@
 11    <uses-permission android:name="android.permission.WAKE_LOCK" />
 11-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:5:5-68
 11-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:5:22-65
-12
-13    <uses-feature android:name="android.hardware.type.watch" />
-13-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:7:5-64
-13-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:7:19-61
-14
-15    <application
-15-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:9:5-36:19
-16        android:allowBackup="true"
-16-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:10:9-35
-17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.1.0] /home/ashish/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
-18        android:debuggable="true"
-19        android:icon="@mipmap/ic_launcher"
-19-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:11:9-43
-20        android:label="@string/app_name"
-20-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:12:9-41
-21        android:supportsRtl="true"
-21-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:13:9-35
-22        android:theme="@android:style/Theme.DeviceDefault" >
-22-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:14:9-59
-23        <uses-library
-23-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:15:9-17:39
-24            android:name="com.google.android.wearable"
-24-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:16:13-55
-25            android:required="true" />
-25-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:17:13-36
-26
-27        <!--
-28               Set to true if your app is Standalone, that is, it does not require the handheld
-29               app to run.
-30        -->
-31        <meta-data
-31-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:23:9-25:36
-32            android:name="com.google.android.wearable.standalone"
-32-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:24:13-66
-33            android:value="true" />
-33-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:25:13-33
-34
-35        <activity
-35-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:27:9-35:20
-36            android:name="com.example.foodordering_wear.MainActivity"
-36-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:28:13-41
-37            android:label="@string/app_name" >
-37-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:29:13-45
-38            <intent-filter>
-38-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:30:13-34:29
-39                <action android:name="android.intent.action.MAIN" />
-39-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:31:17-69
-39-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:31:25-66
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:6:5-78
+12-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:7:5-67
+13-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:7:22-64
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:6:5-78
+14-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:6:22-76
+15
+16    <uses-feature android:name="android.hardware.type.watch" />
+16-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:10:5-64
+16-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:10:19-61
+17
+18    <application
+18-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:12:5-42:19
+19        android:allowBackup="true"
+19-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:13:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.1.0] /home/ashish/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:14:9-43
+23        android:label="@string/app_name"
+23-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:15:9-41
+24        android:supportsRtl="true"
+24-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:16:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme.FullScreen"
+26-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:19:9-51
+27        android:usesCleartextTraffic="true" >
+27-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:18:9-44
+28        <activity android:name="com.example.foodordering_wear.DashbaordActivity" />
+28-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:20:9-64
+28-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:20:19-52
+29
+30        <uses-library
+30-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:22:9-24:39
+31            android:name="com.google.android.wearable"
+31-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:23:13-55
+32            android:required="true" />
+32-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:24:13-36
+33        <!--
+34               Set to true if your app is Standalone, that is, it does not require the handheld
+35               app to run.
+36        -->
+37        <meta-data
+37-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:29:9-31:36
+38            android:name="com.google.android.wearable.standalone"
+38-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:30:13-66
+39            android:value="true" />
+39-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:31:13-33
 40
-41                <category android:name="android.intent.category.LAUNCHER" />
-41-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:33:17-77
-41-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:33:27-74
-42            </intent-filter>
-43        </activity>
-44        <activity
-44-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
-45            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-45-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
-46            android:exported="false"
-46-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
-47            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-47-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
-48
-49        <meta-data
-49-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
-50            android:name="com.google.android.gms.version"
-50-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
-51            android:value="@integer/google_play_services_version" />
-51-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
-52    </application>
-53
-54</manifest>
+41        <activity
+41-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:33:9-41:20
+42            android:name="com.example.foodordering_wear.MainActivity"
+42-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:34:13-41
+43            android:label="@string/app_name" >
+43-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:35:13-45
+44            <intent-filter>
+44-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:36:13-40:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:37:17-69
+45-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:37:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:39:17-77
+47-->/home/ashish/AndroidStudioProjects/Foodorderingapp/foodordering_wear/src/main/AndroidManifest.xml:39:27-74
+48            </intent-filter>
+49        </activity>
+50        <activity
+50-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+51            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+51-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+52            android:exported="false"
+52-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+53            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+53-->[com.google.android.gms:play-services-base:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/98398eb6c4bd1436feb4361258fbbde0/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+54
+55        <meta-data
+55-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
+56            android:name="com.google.android.gms.version"
+56-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
+57            android:value="@integer/google_play_services_version" />
+57-->[com.google.android.gms:play-services-basement:16.0.1] /home/ashish/.gradle/caches/transforms-2/files-2.1/3a8be10efe4c71e71cd4cf356db2cbba/jetified-play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
+58    </application>
+59
+60</manifest>

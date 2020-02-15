@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.foodorderingapp.Adapater.RestaurantFoodAdapter;
+import com.example.foodorderingapp.Interface.FoodApi;
 import com.example.foodorderingapp.Interface.RestuarantApi;
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
@@ -22,7 +24,7 @@ import retrofit2.Response;
 public class ViewResturantFoodActivity extends AppCompatActivity {
 
     RecyclerView rv;
-    public static List<Restuarant> lstresfood;
+    public static List<Food> lstresfood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +49,12 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         String resid = bundle.getString("id");
         Toast.makeText(this, "id:" + resid, Toast.LENGTH_SHORT).show();
 
-        RestuarantApi restuarantApi = Url.getInstance().create(RestuarantApi.class);
-       Call<List<Restuarant>> resfoodcall = restuarantApi.foodres();
+        FoodApi restuarantApi = Url.getInstance().create(FoodApi.class);
+       Call<List<Food>> resfoodcall = restuarantApi.getcategory(Url.token);
 
-       resfoodcall.enqueue(new Callback<List<Restuarant>>() {
+       resfoodcall.enqueue(new Callback<List<Food>>() {
            @Override
-           public void onResponse(Call <List<Restuarant>> call, Response<List<Restuarant>>response) {
+           public void onResponse(Call <List<Food>> call, Response<List<Food>>response) {
                if (!response.isSuccessful()) {
                    Toast.makeText(ViewResturantFoodActivity.this, "Error" + response.code(), Toast.LENGTH_SHORT).show();
                    return;
@@ -67,7 +69,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
            }
 
            @Override
-           public void onFailure(Call<List<Restuarant>> call, Throwable t) {
+           public void onFailure(Call<List<Food>> call, Throwable t) {
 
            }
        });

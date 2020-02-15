@@ -39,19 +39,19 @@ public class Restuarant {
         this.res_image = res_image;
     }
 
-    public Food getFooditem() {
-        return fooditem;
-    }
+//    public Food getFooditem() {
+//        return fooditem;
+//    }
+//
+//    public void setFooditem(Food fooditem) {
+//        this.fooditem = fooditem;
 
-    public void setFooditem(Food fooditem) {
-        this.fooditem = fooditem;
-    }
 
     private String _id;
     private String resturant_name;
     private String resturant_address;
     private String res_image;
-    private  Food fooditem;
+    //private  Food fooditem;
 
 
     public Restuarant(String _id, String resturant_name, String resturant_address, String res_image, Food fooditem) {
@@ -59,7 +59,7 @@ public class Restuarant {
         this.resturant_name = resturant_name;
         this.resturant_address = resturant_address;
         this.res_image = res_image;
-        this.fooditem = fooditem;
+        //this.fooditem = fooditem;
     }
     public Restuarant( String resturant_name,String res_image) {
 

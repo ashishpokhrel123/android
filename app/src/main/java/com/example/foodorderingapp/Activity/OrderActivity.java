@@ -26,6 +26,8 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Order Now");
 
 
         selectitem_image = findViewById(R.id.selfoodimg);
@@ -88,8 +90,11 @@ public class OrderActivity extends AppCompatActivity {
         btnaddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(OrderActivity.this,"Price:"+counter,Toast.LENGTH_SHORT).show();
+                addtocart();
             }
         });
+    }
+
+    private void addtocart() {
     }
 }

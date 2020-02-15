@@ -4,12 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,7 +41,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements SensorEventListener {
+
+    private  static   final String TAG = "LoginActivity";
 
 
     private EditText etusername,etpassword;
@@ -42,10 +52,14 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox chk;
     private SensorManager sensorManager;
     Vibrator vibrator;
+    Sensor accelermoter;
 
     SharedPreferences sharedPreferences,token;
 
     String name,Username,Password;
+
+
+
 
 
 
@@ -60,6 +74,14 @@ public class LoginActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.password);
         btnlogin = findViewById(R.id.login);
         chk = findViewById(R.id.chkrememberme);
+
+        Log.d(TAG,"onCreate: Initalising Sesnor Services");
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+
+        accelermoter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(LoginActivity.this,accelermoter,SensorManager.SENSOR_DELAY_NORMAL);
+        Log.d(TAG,"onCreate: Registered acclerometer listener");
+
 
 
 
@@ -92,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
     public void login()
     {
         String uname = etusername.getText().toString();
@@ -147,6 +171,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Log.d(TAG,"onSensorChange: x:" +  event.values[0] + "Y" +event.values[1] + "Z" +event.values[2]);
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 
+
+    }
 }

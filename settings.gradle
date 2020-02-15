@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-include ':app', ':foodorderingwearable'
-=======
 include ':app', ':foodordering_wear'
->>>>>>> resturant
 rootProject.name='Foodorderingapp'

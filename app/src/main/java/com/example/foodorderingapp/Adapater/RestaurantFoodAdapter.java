@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodorderingapp.Activity.OrderActivity;
+import com.example.foodorderingapp.Model.Food;
 import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
@@ -25,9 +26,9 @@ import java.util.List;
 public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodAdapter.RestaurantFoodViewHolder> {
 
     Context mcontext;
-    List<Restuarant> fooditemList;
+    List<Food> fooditemList;
 
-    public RestaurantFoodAdapter(Context  mcontext, List<Restuarant> fooditems){
+    public RestaurantFoodAdapter(Context  mcontext, List<Food> fooditems){
         this.mcontext= mcontext;
         this.fooditemList = fooditems;
     }
@@ -46,12 +47,12 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
     @Override
     public void onBindViewHolder(@NonNull RestaurantFoodViewHolder holder, int position) {
 
-        Restuarant res = fooditemList.get(position);
+       Food food = fooditemList.get(position);
 
-        String name = fooditemList.get(0).getFooditem().getFoodname();
+        String name = fooditemList.get(position).getFoodname();
 
 
-       String imagepath = Url.BASE_URL + "uploads/" + fooditemList.get(position);
+       String imagepath = Url.BASE_URL + "uploads/" + fooditemList.get(position).getFoodimage();
         StrictModeClass.StrictMode();
         try {
           URL url = new URL(imagepath);
