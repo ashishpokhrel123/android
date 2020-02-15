@@ -2,18 +2,18 @@ package com.example.foodorderingapp.Model;
 
 public class User {
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
-    public User(String id) {
-        this.id = id;
+    public User(String _id) {
+        this._id = _id;
     }
 
-    private String id;
+    private String _id;
     private String name;
     private String phone;
     private String email;

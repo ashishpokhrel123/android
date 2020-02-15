@@ -132,7 +132,7 @@ import retrofit2.Response;
         String totprice = totalprice.getText().toString();
         String quanity = no_of_item.getText().toString();
         String fn = foodname;
-        String fid = foodid;
+        String fid = globaluser.getId();
 
         Cart cart = new Cart(userid,foodname,quanity,totprice);
 
