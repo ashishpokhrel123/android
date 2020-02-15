@@ -13,7 +13,7 @@ public class DashbaordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        textView = findViewById(R.id.txtname);
+        //textView = findViewById(R.id.txtname);
 
 
     }
