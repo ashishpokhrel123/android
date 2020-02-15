@@ -1,6 +1,19 @@
 package com.example.foodorderingapp.Model;
 
 public class User {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public User(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private String name;
     private String phone;
     private String email;
@@ -11,6 +24,7 @@ public class User {
 
 
     public User(String name, String phone, String email, String username, String password,String profileimage) {
+
         this.name = name;
         this.phone = phone;
         this.email = email;

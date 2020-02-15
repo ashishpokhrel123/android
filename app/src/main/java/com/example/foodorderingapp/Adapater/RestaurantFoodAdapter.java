@@ -47,7 +47,7 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
     @Override
     public void onBindViewHolder(@NonNull RestaurantFoodViewHolder holder, int position) {
 
-       Food food = fooditemList.get(position);
+       final Food food = fooditemList.get(position);
 
         String name = fooditemList.get(position).getFoodname();
 
@@ -70,6 +70,8 @@ public class RestaurantFoodAdapter extends  RecyclerView.Adapter<RestaurantFoodA
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mcontext, OrderActivity.class);
+                i.putExtra("foodid",food.getId());
+                i.putExtra("foodname",food.getFoodname());
                 mcontext.startActivity(i);
             }
         });

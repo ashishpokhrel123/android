@@ -9,9 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.foodorderingapp.Interface.OrderApi;
+import com.example.foodorderingapp.Model.Cart;
 import com.example.foodorderingapp.R;
+import com.example.foodorderingapp.URL.Url;
+import com.example.foodorderingapp.strictmode.StrictModeClass;
+import static com.example.foodorderingapp.Activity.DashboardActivity.globaluser;
 
-public class OrderActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+ public class OrderActivity extends AppCompatActivity {
 
     ImageView selectitem_image;
     TextView txtdesc,no_of_item,totalprice;
@@ -21,13 +30,33 @@ public class OrderActivity extends AppCompatActivity {
     public static int counter = 1;
     public static int c2 = 1;
 
+     public String foodid  = "";
+    public  String foodname = "";
 
-    @Override
+    public String userid = globaluser.getId();
+
+
+
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Order Now");
+
+        Bundle bundle = getIntent().getExtras();
+         foodid = bundle.getString("foodid");
+         foodname = bundle.getString("foodname");
+
+
+
+
+
+
+
+
+
+
 
 
         selectitem_image = findViewById(R.id.selfoodimg);
@@ -95,6 +124,47 @@ public class OrderActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void addtocart() {
+
+
+        String totprice = totalprice.getText().toString();
+        String quanity = no_of_item.getText().toString();
+        String fn = foodname;
+        String fid = foodid;
+
+        Cart cart = new Cart(userid,foodname,quanity,totprice);
+
+        OrderApi orderApi = Url.getInstance().create(OrderApi.class);
+        Call<Cart> cartCall = orderApi.addcart(Url.token,cart);
+
+
+        cartCall.enqueue(new Callback<Cart>() {
+            @Override
+            public void onResponse(Call<Cart> call, Response<Cart> response) {
+
+                if(!response.isSuccessful())
+                {
+                    Toast.makeText(OrderActivity.this, "Error" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Toast.makeText(OrderActivity.this,"Order Succesfully",Toast.LENGTH_SHORT).show();
+
+            }
+
+
+            @Override
+            public void onFailure(Call<Cart> call, Throwable t) {
+
+
+            }
+        });
+
+
+
+
+
     }
 }
