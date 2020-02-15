@@ -43,7 +43,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements SensorEventListener {
 
-    private  static   final String TAG = "LoginActivity";
+
 
 
     private EditText etusername,etpassword;
@@ -75,15 +75,20 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
         btnlogin = findViewById(R.id.login);
         chk = findViewById(R.id.chkrememberme);
 
-        Log.d(TAG,"onCreate: Initalising Sesnor Services");
+
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
 
         accelermoter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(LoginActivity.this,accelermoter,SensorManager.SENSOR_DELAY_NORMAL);
-        Log.d(TAG,"onCreate: Registered acclerometer listener");
 
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("Useit",MODE_PRIVATE);
+        String token = sharedPreferences.getString("token","empty");
+        if(!token.equals("empty")){
+            Url.token = "Bearer " + token;
+            openDashBoard();
+        }
 
 
 
@@ -134,14 +139,9 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
                     Toast.makeText(LoginActivity.this,"Username or password not match",Toast.LENGTH_SHORT).show();
                     Vibrator vibrator=(Vibrator) getSystemService(VIBRATOR_SERVICE);
                     vibrator.vibrate(2000);
-                }else{
-                    Toast.makeText(LoginActivity.this,"Token:"+response.body().getToken(),Toast.LENGTH_SHORT).show();
-                    sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username",etusername.getText().toString());
-                    editor.putString("token", response.body().getToken());
+                }else {
 
-                    Url.token += response.body().getToken();
+
 
 
 
@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG,"onSensorChange: x:" +  event.values[0] + "Y" +event.values[1] + "Z" +event.values[2]);
+        Toast.makeText(LoginActivity.this,"onSensorChange: x:" +  event.values[0] + "Y" +event.values[1] + "Z" +event.values[2],Toast.LENGTH_LONG);
 
     }
 
