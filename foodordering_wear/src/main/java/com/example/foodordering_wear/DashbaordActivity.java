@@ -19,6 +19,7 @@ public class DashbaordActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     ImageView img;
+    TextView txttoken;
 
     public static  List<Food> lstfoods;
 
@@ -29,33 +30,12 @@ public class DashbaordActivity extends AppCompatActivity {
 
 
 
-        recyclerView = findViewById(R.id.recyclerwatch);
-
-        FoodApi foodApi = Url.getInstance().create(FoodApi.class);
-        Call<List<Food>> foodCall = foodApi.getcategory(Url.token);
-
-        foodCall.enqueue(new Callback<List<Food>>() {
-            @Override
-            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(DashbaordActivity.this,"Error"+response.code(),Toast.LENGTH_SHORT).show();
-                }
-                lstfoods = response.body();
+        Bundle bundle = getIntent().getExtras();
+        String resid = bundle.getString("token");
 
 
-                WatchAdapter watchAdapter = new WatchAdapter(DashbaordActivity.this,lstfoods);
-                recyclerView.setAdapter(watchAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(DashbaordActivity.this,RecyclerView.HORIZONTAL,false));
+        txttoken.setText(resid);
 
-            }
-
-            @Override
-            public void onFailure(Call<List<Food>> call, Throwable t) {
-
-                Toast.makeText(DashbaordActivity.this,"Error",Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
 
     }
