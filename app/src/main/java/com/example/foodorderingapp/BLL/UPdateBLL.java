@@ -13,8 +13,8 @@ import retrofit2.Response;
 public class UPdateBLL {
     boolean isSuccess = false;
 
-    public boolean update(String username, String password, String email, String phone, String name,String image) {
-        User user = new User(name, email, phone, username, password,image);
+    public boolean update(String name, String email, String phone) {
+        User user = new User(name, email, phone);
 
         UserApi usersAPI = Url.getInstance().create(UserApi.class);
         Call<User> usersCall = usersAPI.updateuser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTM2ZGY1NmEyOGFiNTE2NGE1MzMxZGUiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU4MTc3NjQzMH0.ReAET7Z_XZI0wFNi325KFWkVwOKcjrUbmApUJu51vI4", user);

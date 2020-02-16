@@ -19,6 +19,11 @@ public class User {
         this.profileimage = profileimage;
     }
 
+
+
+
+    
+
     public User(String username,String password)
     {
         this.username = username;

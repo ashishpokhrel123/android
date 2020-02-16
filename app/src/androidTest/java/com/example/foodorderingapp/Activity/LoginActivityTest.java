@@ -41,11 +41,11 @@ public class LoginActivityTest {
 
     @Test
     public void TestLogin(){
-        onView(withId(R.id.logusername))
+        onView(withId(R.id.lusername))
                 .perform(typeText("ashish"))
                 .perform(closeSoftKeyboard());
 
-        onView(withId(R.id.logpassword))
+        onView(withId(R.id.lpassword))
                 .perform(typeText("ashish"))
                 .perform(closeSoftKeyboard());
 

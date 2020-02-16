@@ -13,7 +13,7 @@ import retrofit2.Response;
 public class SignupBLL {
     boolean isSuccess = false;
 
-    public boolean login(String username, String password,String email, String phone,String name,String profileimage) {
+    public boolean login(String name, String email,String phone, String username,String password,String profileimage) {
 
         User user = new User(name,email,phone,username,password,profileimage);
 

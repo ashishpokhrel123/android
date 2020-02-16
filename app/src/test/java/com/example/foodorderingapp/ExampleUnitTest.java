@@ -38,7 +38,7 @@ public class ExampleUnitTest {
     @Test
     public void testupdate(){
        UPdateBLL uPdateBLL = new UPdateBLL();
-        boolean result = uPdateBLL.update("uttam","Burger","uttt@gmail.com","98671872000","Uttam","ram.jpeg");
+        boolean result = uPdateBLL.update("uttam","uttam@gmail.com","987567e5r789");
         assertEquals(true,result);
 
     }
