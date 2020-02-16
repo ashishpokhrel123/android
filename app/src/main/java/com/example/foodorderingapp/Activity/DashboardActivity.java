@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 
 import com.example.foodorderingapp.Broadcast.BroadcastReceiver;
+import com.example.foodorderingapp.Fragment.CartFragment;
 import com.example.foodorderingapp.Fragment.HomeFragment;
 import com.example.foodorderingapp.Interface.FoodApi;
 import com.example.foodorderingapp.Interface.UserApi;
@@ -190,6 +191,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
 
+
     private void loaduser() {
 
         final UserApi userApi = Url.getInstance().create(UserApi.class);
@@ -204,7 +206,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 }
 
                 globaluser = response.body();
-                String imgPath = Url.imagePath +  response.body().getProfileimage();
+                //String imgPath = Url.imagePath +  response.body().getProfileimage();
                 String username =  response.body().getName();
                 //Toast.makeText(DashboardActivity.this,"image:"+imgPath,Toast.LENGTH_SHORT).show();
                 //Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
@@ -265,6 +267,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.editprofile:
                 profileupdate();
                 break;
+                case R.id.cart:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                            new CartFragment()).commit();
+
+
             case R.id.account:
                 logout();
                 Intent i = new Intent(DashboardActivity.this,LoginActivity.class);

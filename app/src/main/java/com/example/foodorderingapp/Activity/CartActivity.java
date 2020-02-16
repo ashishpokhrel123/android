@@ -15,6 +15,7 @@ import com.example.foodorderingapp.Model.Cart;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,6 +39,11 @@ public class CartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_cart);
         txtprice = findViewById(R.id.final_price);
         recyclerView = findViewById(R.id.recycler_cart);
+
+        lstcart = new ArrayList<>();
+
+        lstcart.add(new Cart("78908646rtfi7585999","Fries","2","300"));
+
 
         vieworderfood();
     }

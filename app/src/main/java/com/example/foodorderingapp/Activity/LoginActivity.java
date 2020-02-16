@@ -83,12 +83,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("Useit",MODE_PRIVATE);
-        String token = sharedPreferences.getString("token","empty");
-        if(!token.equals("empty")){
-            Url.token = "Bearer " + token;
-            openDashBoard();
-        }
+
 
 
 
@@ -142,7 +137,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
                 }else {
 
 
-
+                    Url.token += response.body().getToken();
 
 
                     openDashBoard();
