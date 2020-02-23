@@ -49,7 +49,7 @@ import retrofit2.Response;
          foodname = bundle.getString("foodname");
 
 
-
+           //Toast.makeText(OrderActivity.this,"fid"+foodid,Toast.LENGTH_LONG).show();
 
 
 
@@ -127,14 +127,15 @@ import retrofit2.Response;
 
 
     private void addtocart() {
+         Toast.makeText(OrderActivity.this,"fid"+foodid,Toast.LENGTH_LONG).show();
 
 
         String totprice = totalprice.getText().toString();
         String quanity = no_of_item.getText().toString();
-        String fn = foodname;
+        String fn = foodid;
         String fid = globaluser.getId();
 
-        Cart cart = new Cart(userid,foodname,quanity,totprice);
+        Cart cart = new Cart(userid,foodid,quanity,totprice);
 
         OrderApi orderApi = Url.getInstance().create(OrderApi.class);
         Call<Cart> cartCall = orderApi.addcart(Url.token,cart);

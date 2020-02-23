@@ -45,14 +45,15 @@ public class AllResturantAdapter extends RecyclerView.Adapter<AllResturantAdapte
     public void onBindViewHolder(@NonNull AllResturantViewHolder holder, final int position) {
 
 
-          final Restuarant res = lstres.get(position);
 
-       String imagepath = Url.BASE_URL +"uploads" +lstres.get(position).getRes_image();
-       String rename = lstres.get(position).getResturant_name();
-         StrictModeClass.StrictMode();
+        final Restuarant res = lstres.get(position);
+
+        String imagepath = Url.BASE_URL +"uploads/" + lstres.get(position).getRes_image();
+        String re8sname = lstres.get(position).getResturant_name();
+        StrictModeClass.StrictMode();
 
 
-           try {
+        try {
               URL url=new URL(imagepath);
             holder.resimage.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
 
@@ -61,7 +62,7 @@ public class AllResturantAdapter extends RecyclerView.Adapter<AllResturantAdapte
 
         }
 
-        holder.txtname.setText(rename);
+        holder.txtname.setText(re8sname);
            holder.txtname.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {

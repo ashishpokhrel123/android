@@ -2,20 +2,20 @@ package com.example.foodorderingapp.Model;
 
 public class Food {
     public String getId() {
-        return id;
+        return _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String _id) {
+        this._id = _id;
     }
 
-    private String id;
+    private String _id;
     private String foodname;
     private String foodimage;
     private String price;
 
-    public Food(String id,String foodname, String foodimage, String price) {
-        this.id = id;
+    public Food(String _id,String foodname, String foodimage, String price) {
+        this._id = _id;
         this.foodname = foodname;
         this.foodimage = foodimage;
         this.price = price;

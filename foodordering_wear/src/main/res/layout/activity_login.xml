@@ -7,8 +7,16 @@
     android:orientation="vertical"
     tools:context=".DashbaordActivity">
 
+
    <ImageView
        android:layout_width="200dp"
        android:layout_height="200dp"
       android:src="@color/action_button_background"/>
+
+ <androidx.recyclerview.widget.RecyclerView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+    android:id="@+id/watchrecycler"/>
+
+
 </RelativeLayout>

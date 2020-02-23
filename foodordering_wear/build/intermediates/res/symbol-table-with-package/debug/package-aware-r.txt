@@ -1375,6 +1375,7 @@ id unchecked
 id uniform
 id up
 id useLogo
+id watchrecycler
 id wearable_support_action_drawer_expand_icon
 id wearable_support_action_drawer_item_icon
 id wearable_support_action_drawer_item_text
@@ -1497,6 +1498,7 @@ layout alert_dialog_wearable
 layout custom_dialog
 layout decomposition_config_activity
 layout dismiss_overlay
+layout food
 layout navigation_drawer_item_view
 layout navigation_drawer_view
 layout notification_action

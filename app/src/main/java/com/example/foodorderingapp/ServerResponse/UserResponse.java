@@ -2,20 +2,12 @@ package com.example.foodorderingapp.ServerResponse;
 
 public class UserResponse {
 
-    private String Status;
-    private String token;
-
-    public UserResponse(String status, String token) {
-        Status = status;
-        this.token = token;
-    }
-
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public String getToken() {
@@ -25,4 +17,13 @@ public class UserResponse {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public UserResponse(String status, String token) {
+        this.status = status;
+        this.token = token;
+    }
+
+    private String status;
+    private String token;
+
 }

@@ -180,7 +180,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
       cartimg.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              Intent i  = new Intent(DashboardActivity.this,CartActivity.class);
+              Intent i  = new Intent(DashboardActivity.this,ViewOrderActivity.class);
               startActivity(i);
           }
       });
@@ -212,7 +212,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 //Toast.makeText(DashboardActivity.this,"name:"+username,Toast.LENGTH_SHORT).show();
                 TextView navigationtxtuser = (TextView)drawer.findViewById(R.id.txtuser);
                 ImageView profile = (ImageView)drawer.findViewById(R.id.userprofile);
-                navigationtxtuser.setText(username);
+                 navigationtxtuser.setText(username);
 
             }
 
@@ -235,14 +235,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         startActivity(i);
     }
 
-    private void logout() {
-
-        if(token !="Bearer "){
-            token = "Bearer ";
-        }
-
-
+    private void vieworder(){
+        Intent i = new Intent(DashboardActivity.this,ViewOrderActivity.class);
+        startActivity(i);
     }
+
+
 
 
 
@@ -268,8 +266,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 profileupdate();
                 break;
                 case R.id.cart:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container,
-                            new CartFragment()).commit();
+                   vieworder();
+                   break;
 
 
             case R.id.account:
@@ -310,7 +308,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             super.onStop();
             unregisterReceiver(broadCastReceiver);
         }
+    private void logout() {
 
+        if(token !="Bearer "){
+            token = "Bearer ";
+        }
+
+
+    }
 
 
 }

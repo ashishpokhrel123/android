@@ -30,11 +30,15 @@ public class DashbaordActivity extends AppCompatActivity {
 
 
 
+
         Bundle bundle = getIntent().getExtras();
         String resid = bundle.getString("token");
 
 
         txttoken.setText(resid);
+
+
+        //textView = findViewById(R.id.txtname);
 
 
 

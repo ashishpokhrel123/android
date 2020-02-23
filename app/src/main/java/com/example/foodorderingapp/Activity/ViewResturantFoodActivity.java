@@ -15,6 +15,7 @@ import com.example.foodorderingapp.Model.Restuarant;
 import com.example.foodorderingapp.R;
 import com.example.foodorderingapp.URL.Url;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,7 +36,7 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         rv = findViewById(R.id.recycler_resturantfood);
 
 
-
+ lstresfood = new ArrayList<>();
 
 
         getResfood();
@@ -49,8 +50,11 @@ public class ViewResturantFoodActivity extends AppCompatActivity {
         String resid = bundle.getString("id");
         Toast.makeText(this, "id:" + resid, Toast.LENGTH_SHORT).show();
 
+
         FoodApi restuarantApi = Url.getInstance().create(FoodApi.class);
        Call<List<Food>> resfoodcall = restuarantApi.getcategory(Url.token);
+
+
 
        resfoodcall.enqueue(new Callback<List<Food>>() {
            @Override

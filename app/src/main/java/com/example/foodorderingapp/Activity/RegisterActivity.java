@@ -35,8 +35,8 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     private CircleImageView imgProfile;
-    private EditText etname, etemail, etphone, etusername, etpassword;
-    private Button btnsignup;
+    protected EditText etname, etemail, etphone, etusername, etpassword;
+    protected Button btnsignup;
     String imagepath;
     private String imageName = "";
 
@@ -154,7 +154,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Signup success!", Toast.LENGTH_SHORT).show();
             }
 
             @Override

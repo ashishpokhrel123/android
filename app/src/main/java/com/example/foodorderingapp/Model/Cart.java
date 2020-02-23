@@ -5,6 +5,7 @@ public class Cart {
     private String user;
     private String food;
     private String quanity;
+
     private String totalprice;
 
     public Cart(String user, String food, String quanity, String totalprice) {
@@ -12,6 +13,10 @@ public class Cart {
         this.food = food;
         this.quanity = quanity;
         this.totalprice = totalprice;
+
+
+
+
     }
 
     public String getUser() {
@@ -38,11 +43,11 @@ public class Cart {
         this.quanity = quanity;
     }
 
+
     public String getTotalprice() {
         return totalprice;
     }
 
-    public void setTotalprice(String totalprice) {
-        this.totalprice = totalprice;
+
     }
-}
+

@@ -24,10 +24,10 @@ import retrofit2.Response;
 
 public class CartActivity extends AppCompatActivity {
 
-           Toolbar toolbar;
-           RecyclerView recyclerView;
-           TextView txtprice;
-            List<Cart> lstcart;
+
+            RecyclerView recyclerView;
+
+    public static List<Cart> cart;
 
 
     @Override
@@ -35,14 +35,15 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        toolbar = findViewById(R.id.cart_toolbar);
-        recyclerView = findViewById(R.id.recycler_cart);
-        txtprice = findViewById(R.id.final_price);
-        recyclerView = findViewById(R.id.recycler_cart);
 
-        lstcart = new ArrayList<>();
 
-        lstcart.add(new Cart("78908646rtfi7585999","Fries","2","300"));
+
+
+        recyclerView = findViewById(R.id.recycler_vieworder);
+
+
+
+
 
 
         vieworderfood();
@@ -50,19 +51,11 @@ public class CartActivity extends AppCompatActivity {
 
     private void vieworderfood() {
 
-        OrderApi orderApi = Url.getInstance().create(OrderApi.class);
-        Call<Cart> cartCall = orderApi.getcart(Url.token);
-        cartCall.enqueue(new Callback<Cart>() {
-            @Override
-            public void onResponse(Call<Cart> call, Response<Cart> response) {
-
             }
 
-            @Override
-            public void onFailure(Call<Cart> call, Throwable t) {
 
-            }
-        });
 
     }
-}
+
+
+

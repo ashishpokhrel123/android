@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.foodorderingapp.Adapater.CartAdapater;
 import com.example.foodorderingapp.Interface.OrderApi;
 import com.example.foodorderingapp.Model.Cart;
 import com.example.foodorderingapp.R;
@@ -30,6 +33,7 @@ public class CartFragment extends Fragment {
     TextView txtname,txtprice;
     Button btndelete;
     List<Cart> lstcart;
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,28 +55,28 @@ public class CartFragment extends Fragment {
 
     private void loadorder() {
         OrderApi orderApi = Url.getInstance().create(OrderApi.class);
-        Call<Cart> cartCall = orderApi.getcart(Url.token);
+        Call<Cart> cartCall = orderApi.getusercart(Url.token);
 
-        cartCall.enqueue(new Callback<Cart>() {
-            @Override
-            public void onResponse(Call<Cart> call, Response<Cart> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(getContext(),"Error"+response.code(),Toast.LENGTH_SHORT).show();
-                }
-              String cprice = "12000";
-                String cname ="Burger";
+           cartCall.enqueue(new Callback<Cart>() {
+               @Override
+               public void onResponse(Call<Cart> call, Response<Cart> response) {
+                   if(!response.isSuccessful()){
+                       Toast.makeText(getContext(), "error" + response.code(), Toast.LENGTH_LONG).show();
+                       return;
+                   }
 
-                txtname.setText(cname);
-                txtprice.setText(cprice);
 
-            }
+                   CartAdapater cartAdapater = new CartAdapater(getContext(), lstcart);
+                  recyclerView.setAdapter(cartAdapater);
+                  recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+               }
 
-            @Override
-            public void onFailure(Call<Cart> call, Throwable t) {
+               @Override
+               public void onFailure(Call<Cart> call, Throwable t) {
 
-            }
-        });
+               }
+           });
 
-    }
+        }
 
 }

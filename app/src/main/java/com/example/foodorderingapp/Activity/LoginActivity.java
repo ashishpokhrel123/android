@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
 
 
-    private EditText etusername,etpassword;
-    private Button btnlogin;
+   public EditText etusername,etpassword;
+    public  Button btnlogin;
     private TextView txtreg;
     private CheckBox chk;
     private SensorManager sensorManager;
@@ -70,8 +70,8 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
         //getSupportActionBar().hide();
 
-        etusername = findViewById(R.id.username);
-        etpassword = findViewById(R.id.password);
+        etusername = findViewById(R.id.lusername);
+        etpassword = findViewById(R.id.lpassword);
         btnlogin = findViewById(R.id.login);
         chk = findViewById(R.id.chkrememberme);
 
@@ -134,7 +134,16 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
                     Toast.makeText(LoginActivity.this,"Username or password not match",Toast.LENGTH_SHORT).show();
                     Vibrator vibrator=(Vibrator) getSystemService(VIBRATOR_SERVICE);
                     vibrator.vibrate(2000);
-                }else {
+
+
+
+                }else{
+                    Toast.makeText(LoginActivity.this,"Login success!",Toast.LENGTH_SHORT).show();
+                    sharedPreferences = getSharedPreferences("user_details",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username",etusername.getText().toString());
+                    editor.putString("token", response.body().getToken());
+
 
 
                     Url.token += response.body().getToken();

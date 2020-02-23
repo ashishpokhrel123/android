@@ -18,7 +18,7 @@ public class FoodActivity extends AppCompatActivity {
 
   RecyclerView rv_food;
 
-    public static List<Food> foodlist = new ArrayList<>();
+
     public static  List<Food> lstfood;
 
     @Override

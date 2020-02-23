@@ -15,7 +15,8 @@ public interface RestuarantApi {
     @GET("resturants ")
     Call<List<Restuarant>> getrest (@Header("Authorization")String token);
 
-    @GET("resturants/{id}")
-    Call<List<Restuarant>> foodres();
+
+
+
 
 }
