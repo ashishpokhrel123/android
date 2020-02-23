@@ -1051,6 +1051,7 @@ drawable accept_deny_dialog_negative_bg
 drawable accept_deny_dialog_positive_bg
 drawable action_item_background
 drawable action_item_icon_background
+drawable b2
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1060,6 +1061,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable burger
+drawable burger1
 drawable card_background
 drawable card_frame
 drawable card_frame_pressed
@@ -1308,6 +1310,7 @@ id packed
 id parent
 id parentPanel
 id percent
+id pic
 id popular_img
 id progress_circular
 id progress_horizontal
@@ -1375,7 +1378,6 @@ id unchecked
 id uniform
 id up
 id useLogo
-id watchrecycler
 id wearable_support_action_drawer_expand_icon
 id wearable_support_action_drawer_item_icon
 id wearable_support_action_drawer_item_text

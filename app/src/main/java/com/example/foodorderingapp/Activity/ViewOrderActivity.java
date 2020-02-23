@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class ViewOrderActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TextView txtfood, txtprice;
+    Button btndelete;
 
     List<Cart> cart;
 
@@ -35,6 +37,7 @@ public class ViewOrderActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_vieworder);
         txtfood = findViewById(R.id.restfoodname);
         txtprice = findViewById(R.id.restfoodprice);
+        btndelete = findViewById(R.id.btndelete);
 
 
 

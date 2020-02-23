@@ -13,7 +13,7 @@ public class Url {
     //public static final String BASE_URL ="http://10.0.2.2:3002/";
     //public static final String BASE_URL ="http://172.26.1.91:3002/";
 
-    public static final String BASE_URL ="http://192.168.0.118:3002/";
+    public static final String BASE_URL ="http://10.0.2.2:3002/";
     //public static final String BASE_URL ="http://192.168.0.122:3002/";
 
    // For project

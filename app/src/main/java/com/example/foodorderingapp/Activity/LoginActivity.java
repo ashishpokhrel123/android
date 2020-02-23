@@ -92,6 +92,17 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(etusername.getText().toString().matches("")){
+                    etusername.setError("Enter Your Username");
+                    getCurrentFocus();
+                    return;
+                }
+                if(etpassword.getText().toString().matches("")){
+                    etpassword.setError("Enter Your Password");
+                    getCurrentFocus();
+                    return;
+                }
                 login();
             }
         });

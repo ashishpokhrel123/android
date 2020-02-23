@@ -68,9 +68,7 @@ public class MainActivity extends WearableActivity {
 
 
                    Toast.makeText(MainActivity.this,"token:"+Url.token,Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(MainActivity.this,DashbaordActivity.class);
-                    i.putExtra("token",response.body().getToken());
-                    startActivity(i);
+                    openDashBoard();
 
 
 
@@ -90,6 +88,8 @@ public class MainActivity extends WearableActivity {
 
     }
     public void openDashBoard(){
+        Intent i = new Intent(MainActivity.this,DashbaordActivity.class);
+        startActivity(i);
 
     }
 

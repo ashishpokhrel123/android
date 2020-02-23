@@ -72,7 +72,16 @@
       android:layout_marginStart="10dp"
       android:layout_marginTop="20dp"/>
 
+      <Button
 
+          android:layout_width="80dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="20dp"
+          android:text="View All"
+          android:textSize="10dp"
+          android:background="@drawable/button"
+          android:textColor="#fff"
+          android:layout_alignParentEnd="true" />
 
    </RelativeLayout>
    <androidx.recyclerview.widget.RecyclerView
@@ -100,6 +109,16 @@
           android:layout_marginStart="10dp"
           android:layout_marginTop="20dp"/>
 
+      <Button
+
+          android:layout_width="80dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="20dp"
+          android:text="View All"
+          android:textSize="10dp"
+          android:background="@drawable/button"
+          android:textColor="#fff"
+          android:layout_alignParentEnd="true" />
 
    </RelativeLayout>
 

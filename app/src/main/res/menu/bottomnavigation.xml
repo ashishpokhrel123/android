@@ -15,11 +15,7 @@
 
         android:title="Order History"
         android:icon="@drawable/bag"/>
-    <item
-        android:id="@+id/nearby"
 
-        android:title="Near By"
-        android:icon="@drawable/item"/>
     <item
         android:id="@+id/editprofile"
 

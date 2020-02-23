@@ -33,6 +33,15 @@ public class User {
         this.profileimage = profileimage;
     }
 
+    public User(String name, String phone, String email, String username, String password) {
+
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+
+    }
 
 
 
